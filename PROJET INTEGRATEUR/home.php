@@ -199,14 +199,14 @@ $conn->close();}
 <body>
     <!-- Première section -->
     <button id="menubtn">&#9776;</button>
-    <nav id="nav">
+    <!-- <nav id="nav">
         <ul>
             <li><a href="#">Accueil</a></li>
             <li><a href="#">À propos</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <!-- Deuxième section -->
     <div class="container">
@@ -273,7 +273,7 @@ $conn->close();}
                     <input type="email" id="etud-email" name="email" required>
                     <label for="etud-matricule">Matricule :</label>
                     <input type="text" id="etud-matricule"  name="matricule"required>
-                    <button type="submit">Valider</button>
+                  <a href="administration.php" >  <button type="submit" >Valider</button> </a>
                     <button type="reset">Annuler</button>
                 </fieldset>
             </form>
