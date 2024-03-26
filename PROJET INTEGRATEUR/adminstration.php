@@ -68,7 +68,7 @@
          <a class="dropbtn">Administrateur</a>
          <div class="dropdown-content">
           
-         <a href="#">Gestion des etudients</a>
+         <a href="gestion des étudiants/index.php">Gestion des etudients</a>
          <a href="#">Gestion des utilisateurs</a>
           </div>
        </div>

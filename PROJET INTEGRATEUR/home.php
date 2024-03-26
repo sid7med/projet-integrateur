@@ -30,6 +30,47 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();}
 ?>
+<!-- <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "p i";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+// if ($_POST["subject"] == "etud") {
+        if(isset($_POST['atd'])) {
+            $name = $_POST['name'];
+            $prenom = $_POST['prenom'];
+            $adresse = $_POST['adresse'];
+            $tel = $_POST['tel'];
+            $matricule = $_POST['matricule'];
+            
+            $sql = "INSERT INTO etudiant (matricule, nom, prenom, adresse, tel)
+            VALUES ('$matricule', '$name', '$prenom', '$adresse', '$tet')";
+            
+            if ($conn->query($sql) === TRUE) {
+                echo "Étudiant ajouté avec succès";
+            } else {
+                echo "Erreur: " ;
+            }
+        } else {
+            echo "Veuillez cocher la case d'acceptation des conditions.";
+        }
+    // } else {
+    //     echo "Vous n'avez pas sélectionné le statut étudiant.";
+    // }
+}
+
+$conn->close();
+?> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,6 +259,8 @@ $conn->close();}
                 <option value="prof">Professeur</option>
                 <option value="etud">Étudiant</option>
             </select>
+
+
         </div>
         <div class="form" id="enterprise">
             <form method="post">
@@ -273,7 +316,7 @@ $conn->close();}
                     <input type="email" id="etud-email" name="email" required>
                     <label for="etud-matricule">Matricule :</label>
                     <input type="text" id="etud-matricule"  name="matricule"required>
-                  <a href="administration.php" >  <button type="submit" >Valider</button> </a>
+                  <a href="administration.php" >  <button  name="etd" type="submit" >Valider</button> </a>
                     <button type="reset">Annuler</button>
                 </fieldset>
             </form>
@@ -313,4 +356,3 @@ $conn->close();}
     </script>
 </body>
 </html>
-
