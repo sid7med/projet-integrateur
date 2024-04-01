@@ -1,23 +1,4 @@
-<?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "p i";
 
-$con = mysqli_connect($host, $username, $password, $database) or die("couldn't die");
-
-
-
-$result = null;  
-if (isset($_POST['email'])) {
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-
-    $query = "SELECT * FROM users WHERE email = '$email' AND is_valid = 0";
-    $result = mysqli_query($con, $query);
-}
-
-mysqli_close($con);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +12,7 @@ mysqli_close($con);
         <div class="box form-box">
            
             <header>Se connecter</header>
-            <form action="index.php" method="post">
+            <form action="log.php" method="post">
                 <div class="feild input">
                     <label for="username"></label>
                     <input type="text" name="email" id="Email" required placeholder="Entrer votre email">
@@ -51,7 +32,9 @@ mysqli_close($con);
                     <label for="password"></label>
                     <input type="password" name="password" id="password" autocomplete="off"  placeholder="Entrer votre mot de passe" required>
                 </div>
-                
+                <?php if (isset($_GET['error'])) { ?>
+     		<p class="error"><?php echo $_GET['error']; ?></p>
+     	<?php } ?>
                  <center><div class="field">
                     <input type="submit" class="btn" name="submit" value="Se connecter">
                 </div></center>
