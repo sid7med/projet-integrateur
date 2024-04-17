@@ -1,68 +1,74 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email</title>
-</head>
-<body>
-    <div class="container">
-        <div class="box form-box">
+<?php
+    //Import PHPMailer classes into the global namespace
+    //These must be at the top of your script, not inside a function
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+ 
+    //Load Composer's autoloader
+    require 'vendor/autoload.php';
+ 
+    if (isset($_POST["verifyEmail"]))
+    {
+        
+ 
+        //Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+ 
+        try {
+            //Enable verbose debug output
+            $mail->SMTPDebug = 0;//SMTP::DEBUG_SERVER;
+ 
+            //Send using SMTP
+            $mail->isSMTP();
+ 
+            //Set the SMTP server to send through
+            $mail->Host = 'smtp.gmail.com';
+ 
+            //Enable SMTP authentication
+            $mail->SMTPAuth = true;
+ 
+            //SMTP username
+            $mail->Username = '23087@supnum.mr';
+ 
+            //SMTP password
+            $mail->Password = 'Daha4642';
+ 
+            //Enable TLS encryption;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+ 
+            //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->Port = 587;
+ 
+            //Recipients
+            $mail->setFrom('23087@supnum.mr', 'login.php');
+ 
+            //Add a recipient
+            $mail->addAddress($email, $name);
+ 
+            //Set email format to HTML
+            $mail->isHTML(true);
+ 
+            $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+ 
+            $mail->Subject = 'Email verification';
+            $mail->Body    = '<p>Your verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
+ 
+            $mail->send();
+            // echo 'Message has been sent';
+ 
+            $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+ 
+            // connect with database
+            include "db_conn.php";
+ 
            
-            <header>Email</header>
-            <form method="post">
-                <div class="feild input">
-                    <label for="username">verifier l'email</label>
-                    <input type="text" name="email" id="Email" placeholder="Entrez le code de validation">
-                </div>
-                <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "p i";
-
-$con = mysqli_connect($host, $username, $password, $database) or die("Couldn't connect to database");
-
-if (isset($_POST['email'])) {
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    
-    // Check if the email already exists and is not verified
-    $query = "SELECT * FROM users WHERE email = '$email' AND is_valid = 0";
-    $result = mysqli_query($con, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        // Generate a verification token
-        $verification_token = md5(uniqid(rand(), true));
-        
-        // Update the database with the verification token
-        $update_query = "UPDATE users SET verification_token = '$verification_token' WHERE email = '$email'";
-        mysqli_query($con, $update_query);
-        
-        // Send email with verification link
-        $verification_link = "http://yourwebsite.com/verify.php?token=$verification_token";
-        $to = $email;
-        $subject = "Email Verification";
-        $message = "Click the following link to verify your email: $verification_link";
-        $headers = "From: yourname@example.com";
-        mail($to, $subject, $message, $headers);
-
-        echo "An email with a verification link has been sent to $email.";
-    } else {
-        echo "You cannot create an account with this email address.";
+ 
+            header("Location:verifier_email.php?email=" . $email);
+            exit();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
     }
-}
-
-mysqli_close($con);
 ?>
-
-                <div class="feild">                    
-                    <input type="submit" class="btn" value="Valide" required name="valide">
-                </div>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
-
