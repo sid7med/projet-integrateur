@@ -119,7 +119,7 @@
        </div>
     </li>
 
-    <li style="float:right"><a href="#l">Déconnexion</a></li>
+    <li style="float:right"><a href="deconnexion.php">Déconnexion</a></li>
 </ul>
 
        </div>

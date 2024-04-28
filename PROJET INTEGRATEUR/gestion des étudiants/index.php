@@ -45,6 +45,7 @@
                 <th>Pronom</th>
                 <th>Niveaux</th>
                 <th>Simestre</th>
+                <th>action</th>
             </tr>
         </thead>
     </table>

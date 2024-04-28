@@ -1,8 +1,9 @@
 <?php
 session_start();
 include "db_conn.php";
-
+session_start();
 if (isset($_POST['email']) && isset($_POST['password'])) {
+    
 
     function validate($data)
     {
@@ -31,7 +32,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             if ($row['email'] === $email && $row['password'] === $pass) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['is_valid'] = $row['is_valid'];
-                header("Location: adminstration.php");
+                header("Location: index.html");
                 exit();
             } else {
                 header("Location: login.php?error=Incorect User name or password");

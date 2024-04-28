@@ -3,7 +3,7 @@ session_start();
 
 session_destroy();
 
-header("Location: page_au_defaut.php");
+header("Location: index.php");
 
 exit();
 ?>
