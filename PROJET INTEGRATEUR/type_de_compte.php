@@ -87,7 +87,7 @@
 
         .form {
             background-color: #fff;
-            padding: 20px;
+            padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
@@ -225,7 +225,7 @@ move_item
             </select>
         </div>
         <div class="form" id="enterprise">
-            <form>
+            <form action="insertion.php" method="post">
                 <fieldset>
                     <center><legend>Entreprise</legend></center>
                     <label for="enterprise-name">Libelle :</label>
@@ -242,7 +242,7 @@ move_item
             </form>
         </div>
         <div class="form" id="prof" style="display: none;">
-            <form>
+            <form action="insertion.php" method="post">
                 <fieldset>
                     <center><legend>Professeur</legend></center>
                     <label for="prof-name">Nom :</label>
@@ -261,7 +261,7 @@ move_item
             </form>
         </div>
         <div class="form" id="etud" style="display: none;">
-            <form>
+            <form action="insertion.php" method="post">
                 <fieldset>
                     <center><legend>Étudiant</legend></center>
                     <label for="etud-name">Nom :</label>

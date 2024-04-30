@@ -32,6 +32,31 @@ TemplateMo 578 First Portfolio
 https://templatemo.com/tm-578-first-portfolio
 
 -->
+<style> 
+.btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 8px 8px;
+    background-color: inherit;
+    font-family: inherit;
+    margin-left: 20px;
+    position: relative; 
+  }
+  
+
+  .btn {
+    transition: transform 0.3s ease-in-out; 
+  }
+
+  .btn {
+    cursor: pointer;
+  }
+ 
+ 
+
+</style>
 </head>
 
 <body>
@@ -64,7 +89,15 @@ https://templatemo.com/tm-578-first-portfolio
                     <li class="nav-item ">
                         <a class="nav-link click-scroll" href="#section_1">Acceuil</a>
                     <li class="nav-item ">
-                        <a class="nav-link  " href="gestion des étudiants/index.php">administration</a>
+                        <div class="dropdown ">
+                            <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                adminstration
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="gestion des étudiants/index.php">gestion des étudiants</a></li>
+                              <li><a class="dropdown-item" href="gestion des étudiants/index.php">gestion des user</a></li>
+                            </ul>
+                          </div>
                     </li>
 
                     <li class="nav-item">

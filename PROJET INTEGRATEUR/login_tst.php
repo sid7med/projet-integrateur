@@ -1,63 +1,3 @@
-<<?php 
-      include("db_conn.php");
-      if(isset($_POST['submit'])){
-        $email = $_POST['email'];
-        $password = $_POST['password']; // Don't hash the password here
-        
-        // Query for admin table
-        $stmt_admin = $conn->prepare("SELECT email, `password` FROM adminstrateur WHERE Email=?");
-        $stmt_admin->bind_param("s", $email);
-        $stmt_admin->execute();
-        $result_admin = $stmt_admin->get_result();
-
-        // Query for users table
-        $stmt_users = $conn->prepare("SELECT email, `password` FROM users WHERE Email=?");
-        $stmt_users->bind_param("s", $email);
-        $stmt_users->execute();
-        $result_users = $stmt_users->get_result();
-
-        if($result_admin->num_rows == 1){
-          $row = $result_admin->fetch_assoc();
-          $hashed_password = $row['password'];
-          if($password === $hashed_password){ 
-            // Compare passwords directly for admin
-            $_SESSION['email'] = $email; // Store user's email in session
-            header("Location: admin/index.html"); // Redirect to admin page
-            exit(); // Stop further execution
-          
-          } else {
-            echo "<div class='message'>;
-                   <p>Wrong Password</p>
-                  </div> <br>";
-            echo "<a href='login.php'><button class='btn'>Go Back</button>";
-          }
-        } 
-        elseif ($result_users->num_rows == 1) {
-          $row = $result_users->fetch_assoc();
-          $hashed_password = $row['password'];
-          if($password === $hashed_password){ // Compare hashed passwords for users
-            $_SESSION['email'] = $email; // Store user's email in session
-            header("Location: index.html"); // Redirect to client page
-            exit(); // Stop further execution
-         } else {
-            echo "<div class='message'>
-                   <p>Wrong Password</p>
-                  </div> <br>";
-            echo "<a href='login.php'><button class='btn'>Go Back</button>";
-          }
-        } else {
-          echo "<div class='message'>
-                 <p>No user found with that email</p>
-                </div> <br>";
-          echo "<a href='login.php'><button class='btn'>Go Back</button>";
-        }
-      }
-
-      $conn->close();
-    ?>
-
-             
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,11 +24,11 @@
         <img src="logo.png" alt="error" class="logo">
         <div class="tabs">
             <h2 class="reg-tab">S'inscrire</h2>
-            <h2 class="login-tab active">Login</h2>
+            <h2 class="login-tab">Login</h2>
         </div>
         <!-- login part -->
-        <div id="login-form" class="active">
-            <form action="" method="post">
+        <div id="login-form">
+            <form action="log.php" method="Post">
                 <input type="text" name="email" id="Email" required placeholder="Entrer votre email">
                 <input type="password" name="password" id="password" required placeholder="password">
                 <div class="options">
@@ -98,7 +38,7 @@
                     </div> -->
                     <a href="modifier_mot_de_passe.php">Mot de passe oublié ?</a>
                 </div>
-                <button type="submit" name="submit">Se connecter</button>
+                <button type="submit">Se connecter</button>
             </form>
         </div>
         <!-- Lets add registration form -->
@@ -112,7 +52,7 @@
                     <!-- <input type="checkbox" name="accept" id="accept"> -->
                     <!-- <p>I accept the <a href="#">Terms & Conditions</a></p> -->
                 </div>
-                <button type="submit" >S'isncrire</button>
+                <button type="submit">S'isncrire</button>
             </form>
         </div>
 
@@ -142,3 +82,56 @@
 </body>
 
 </html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box form-box">
+           
+            <header>Se connecter</header>
+            <form action="log.php" method="post">
+                <div class="feild input">
+                    <label for="username"></label>
+                    <input type="text" name="email" id="Email" required placeholder="Entrer votre email">
+                </div>
+                <?php
+                if (isset($_POST['submit'])) {
+                    echo '<p>';
+
+                    if (mysqli_num_rows($result) > 0){
+                        echo "Vous ne pouvez pas créer un compte avec cette adresse e-mail";
+                    }
+                    echo '</p>';
+                   
+                }
+                ?>
+                <div class="field input">
+                    <label for="password"></label>
+                    <input type="password" name="password" id="password" autocomplete="off"  placeholder="Entrer votre mot de passe" required>
+                </div>
+                <?php if (isset($_GET['error'])) { ?>
+     		<p class="error"><?php echo $_GET['error']; ?></p>
+     	<?php } ?>
+                 <center><div class="field">
+                    <input type="submit" class="btn" name="submit" value="Se connecter">
+                </div></center>
+                <div class="links">
+                <a href="modifier_mot_de_passe.php"> mot de passe oublie?</a>
+                </div>
+                <div class="links" id="compte">
+                    <a href="verifier_email.php" >créer un compte</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html> -->
