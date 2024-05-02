@@ -1,9 +1,10 @@
-
 <?php
 include "db_conn.php";
+include "nav.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,18 +15,19 @@ include "db_conn.php";
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap4.css">
 
   <title>PHP CRUD Application</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:cornflowerblue;">
-    Liste des étudiants
-  </nav>
+
 
   <div class="container">
     <?php
-    if (isset($_GET["msg"])) { 
+    if (isset($_GET["msg"])) {
       $msg = $_GET["msg"];
       echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
       ' . $msg . '
@@ -34,6 +36,7 @@ include "db_conn.php";
     }
     ?>
     <a href="add-new.php" class="btn btn-primary mb-3">ajouter un nouveau</a>
+    <a   onClick="tableToExcel()" class="btn btn-primary mb-3">file exel</a>
 
     <table id="example" class="table table-hover text-center">
       <thead class="table-primary">
@@ -96,26 +99,33 @@ include "db_conn.php";
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <?php
-include "db_conn.php";
+  include "db_conn.php";
 
-// Vérifiez si des données ont été soumises via le formulaire
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Vérifiez si des données ont été soumises via le formulaire
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifiez si au moins l'un des champs a été soumis
-    if(isset($_POST['nom']) || isset($_POST['prenom']) || isset($_POST['matricule']) || isset($_POST['Niveaux']) || isset($_POST['Semestre']))  {
-        // Affichez la confirmation de la modification avec Bootstrap
-        echo '<div class="alert alert-success alert-dismissible fade show" >
+    if (isset($_POST['nom']) || isset($_POST['prenom']) || isset($_POST['matricule']) || isset($_POST['Niveaux']) || isset($_POST['Semestre'])) {
+      // Affichez la confirmation de la modification avec Bootstrap
+      echo '<div class="alert alert-success alert-dismissible fade show" >
                 Les informations ont été modifiées avec succès !
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>';
     }
-}
+  }
 
 
-?>
-<script src="js/jquery.js"></script>
-<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
-<script type="text/javascript">
-    $('#datatable').DataTable({});
+  ?>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap4.js"></script>
+  <script>
+    new DataTable('#example');
   </script>
+  <script type="text/javascript" src="table2excel.js"></script>
+  <script type="text/javascript" src="ExceJava.js"></script>
 </body>
+
 </html>

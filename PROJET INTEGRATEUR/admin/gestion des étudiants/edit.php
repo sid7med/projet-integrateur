@@ -1,6 +1,7 @@
 <?php
 
 include "db_conn.php";
+include "nav.php";
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -56,9 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:cornflowerblue;">
-        Modifier un étudiant
-    </nav>
+    
     <div class="container">
         <form action="" method="post" onsubmit="return confirmSubmit();" style="width:50vw; min-width:300px;" class="m-auto">
             <div class="mb-3">
