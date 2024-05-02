@@ -20,9 +20,7 @@ include "nav.php";
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap4.css">
 
   <title>PHP CRUD Application</title>
-  <style>
-   
-  </style>
+
 </head>
 
 <body>
