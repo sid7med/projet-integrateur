@@ -20,6 +20,9 @@ include "nav.php";
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap4.css">
 
   <title>PHP CRUD Application</title>
+  <style>
+   
+  </style>
 </head>
 
 <body>
@@ -35,9 +38,10 @@ include "nav.php";
     </div>';
     }
     ?>
-    <a href="add-new.php" class="btn btn-primary mb-3">ajouter un nouveau</a>
+    <div class="d-flex justify-content-between " >
+    <a href="add-new.php" class="btn btn-primary mb-3 ">ajouter un nouveau</a>
     <a   onClick="tableToExcel()" class="btn btn-primary mb-3">file exel</a>
-
+</div>
     <table id="example" class="table table-hover text-center">
       <thead class="table-primary">
         <tr>
