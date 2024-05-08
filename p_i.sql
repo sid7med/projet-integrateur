@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 05 mai 2024 à 23:17
+-- Généré le : mer. 08 mai 2024 à 03:20
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -57,6 +57,41 @@ CREATE TABLE `compte` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `encadrant`
+--
+
+CREATE TABLE `encadrant` (
+  `id` int(11) NOT NULL,
+  `id_professeur` int(11) DEFAULT NULL,
+  `id_pi` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `encadrant`
+--
+
+INSERT INTO `encadrant` (`id`, `id_professeur`, `id_pi`) VALUES
+(1, 3, 16);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entreprise`
+--
+
+CREATE TABLE `entreprise` (
+  `id` int(11) NOT NULL,
+  `Nom_enterprise` varchar(255) NOT NULL,
+  `Adresse` varchar(255) NOT NULL,
+  `Domaine_activite` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Nom_profitionelle` varchar(255) NOT NULL,
+  `logo` longblob DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `etudiant`
 --
 
@@ -93,6 +128,18 @@ CREATE TABLE `professeur` (
   `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `professeur`
+--
+
+INSERT INTO `professeur` (`id`, `nom`, `prenom`, `tel`, `email`) VALUES
+(3, 'azize', 'elbechi', 30349394, '23047@gmail.com'),
+(4, 'zeiny', 'cheikh', 30524849, '23025@gmail.com'),
+(5, 'ahmed', 'sidi mouhamed', 12345678, '23027@supnum.mr'),
+(6, 'sidi med', 'saike', 12345678, '23087@supnum.mr'),
+(7, 'ahmed', 'sidi mouhamed', 12345678, '23027@supnum.mr'),
+(8, 'sidi med', 'saike', 12345678, '23087@supnum.mr');
+
 -- --------------------------------------------------------
 
 --
@@ -106,8 +153,26 @@ CREATE TABLE `p_i` (
   `description` text DEFAULT NULL,
   `technologie` varchar(255) DEFAULT NULL,
   `semester` enum('s2','s3','s4','s5') DEFAULT NULL,
-  `id_professeur` int(11) DEFAULT NULL
+  `id_professeur` int(11) DEFAULT NULL,
+  `annee` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `p_i`
+--
+
+INSERT INTO `p_i` (`id`, `titre`, `encadrer`, `description`, `technologie`, `semester`, `id_professeur`, `annee`) VALUES
+(1, 'jestion des p_i', 'meya', 'xkls;oreieklsdmfnlf', 'php', 's2', NULL, NULL),
+(3, 'getion des stage', 'meye', 'getion des stage', 'JAVA', 's3', NULL, NULL),
+(4, 'getion des stage', 'meye', 'qwrgthyjuki', 'JAVA', 's3', NULL, NULL),
+(5, 'getion des stage', 'meye', 'qwrgthyjuki', 'JAVA', 's3', NULL, 2025),
+(10, 'getion des stage', 'meye', 'aDzfbgxcvhjmk', 'JAVA', 's2', 3, 2025),
+(11, 'getion des stage', 'meye', 'test', 'JAVA', 's5', 3, 2024),
+(12, 'getion des stage', 'meye', 'test', 'JAVA', 's5', 4, 2024),
+(13, 'getion des stage', 'meye', 'weqrwgthnjm', 'JAVA', 's3', 3, 2025),
+(14, 'getion des stage', 'meye', 'jhghtfds', 'JAVA', 's4', 4, 2025),
+(15, 'getion des p_i', 'zeiny', 'test', 'php', 's2', 3, 2024),
+(16, 'getion des p_i', 'zeiny', 'test', 'php', 's2', 3, 2024);
 
 -- --------------------------------------------------------
 
@@ -481,6 +546,14 @@ ALTER TABLE `compte`
   ADD PRIMARY KEY (`compte_id`);
 
 --
+-- Index pour la table `encadrant`
+--
+ALTER TABLE `encadrant`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_professeur` (`id_professeur`),
+  ADD KEY `id_pi` (`id_pi`);
+
+--
 -- Index pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
@@ -530,6 +603,12 @@ ALTER TABLE `compte`
   MODIFY `compte_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `encadrant`
+--
+ALTER TABLE `encadrant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
@@ -539,13 +618,13 @@ ALTER TABLE `etudiant`
 -- AUTO_INCREMENT pour la table `professeur`
 --
 ALTER TABLE `professeur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `p_i`
 --
 ALTER TABLE `p_i`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -562,6 +641,13 @@ ALTER TABLE `utilisateur`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `encadrant`
+--
+ALTER TABLE `encadrant`
+  ADD CONSTRAINT `encadrant_ibfk_1` FOREIGN KEY (`id_professeur`) REFERENCES `professeur` (`id`),
+  ADD CONSTRAINT `encadrant_ibfk_2` FOREIGN KEY (`id_pi`) REFERENCES `p_i` (`id`);
 
 --
 -- Contraintes pour la table `p_i`
