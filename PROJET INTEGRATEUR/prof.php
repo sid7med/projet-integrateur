@@ -7,7 +7,7 @@ $sql = "SELECT * FROM `professeur`";
 $res = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,10 +51,10 @@ $res = mysqli_query($conn, $sql);
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="form-floating">
                             <select name="semester" id="semester" class="form-control">
-                                <option value="s2">s2</option>
-                                <option value="s3">s3</option>
-                                <option value="s4">s4</option>
-                                <option value="s5">s5</option>
+                                <option value="s2">S2</option>
+                                <option value="s3">S3</option>
+                                <option value="s4">S4</option>
+                                <option value="s5">S5</option>
                             </select>
                             <label for="floatingInput">Semester</label>
                         </div>
@@ -77,13 +77,13 @@ $res = mysqli_query($conn, $sql);
                             <label for="floatingTextarea">Description</label>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-12">
+                    <!-- <div class="col-lg-12 col-12">
                         <div class="form-floating">
                             <input type="text" name="annee" id="email" class="form-control" placeholder=" par example (2024) " required="">
                             <label for="floatingInput">Annee</label>
                         </div>
-                    </div>
-                    <div class="overflow-auto" style="max-height: 25px;">
+                    </div> -->
+                    <div class="overflow-auto" style="max-height: 75px;">
     <?php mysqli_data_seek($res, 0);  ?>
     <?php while ($row2 = mysqli_fetch_array($res)) : ?>
         <div class="col-lg-12 col-12">

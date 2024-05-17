@@ -8,15 +8,15 @@ if (isset($_POST['submit'])) {
     $Description = mysqli_real_escape_string($conn, $_POST['Description']);
     $semester = mysqli_real_escape_string($conn, $_POST['semester']);
     $Technologie = mysqli_real_escape_string($conn, $_POST['Technologie']);
-    $annee = mysqli_real_escape_string($conn, $_POST['annee']);
+    // $annee = mysqli_real_escape_string($conn, $_POST['annee']);
     $professors = $_POST['professors'];
-
+$annee = date("Y");
     $lastInsertedId = null;
     $professorId = null;
 
     foreach($professors as $prof) {
-        $sql = "INSERT INTO p_i (titre, encadrer, `description`, technologie, semester, id_professeur, annee)
-                VALUES ('$titre', '$Encadrer', '$Description', '$Technologie', '$semester', '$prof', '$annee')";
+        $sql = "INSERT INTO p_i (titre,  `description`, technologie, semester,  annee)
+                VALUES ('$titre',  '$Description', '$Technologie', '$semester',  '$annee')";
 
         if (mysqli_query($conn, $sql)) {
             $lastInsertedId = mysqli_insert_id($conn);
