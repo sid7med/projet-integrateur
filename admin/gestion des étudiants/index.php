@@ -1,11 +1,12 @@
-
 <?php
-include "db_conn.php";
+include "../gestion des entreprises/nav.php";
+echo"<br><br><br><br><br><br>";
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.css" rel="stylesheet">
@@ -16,16 +17,60 @@ include "db_conn.php";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>PHP CRUD Application</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+
+    <title>SupNum Plateform</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="css/magnific-popup.css" rel="stylesheet">
+
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+<style>
+  .navbar-brand{
+    color:  var(--p-color);
+  }
+  .navbar .custom-btn {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+
+</style>
 </head>
 
-<body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:cornflowerblue;">
-    Liste des étudiants
-  </nav>
 
+
+
+<?php
+include "db_conn.php";
+?>
+
+<!-- <head>
+  <meta charset="UTF-8">
+ 
+ 
+</head> -->
+
+
+  
   <div class="container">
     <?php
-    if (isset($_GET["msg"])) { 
+    if (isset($_GET["msg"])) {
       $msg = $_GET["msg"];
       echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
       ' . $msg . '
@@ -115,7 +160,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="js/jquery.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
 <script type="text/javascript">
-    $('#datatable').DataTable({});
+    $('#example').DataTable({});
   </script>
+
+
+        
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-12">
+                    <div class="copyright-text-wrap">
+                        <p class="mb-0">
+                            <span class="copyright-text">Copyright © 2024  <a href="supnum.mr">SupNum</a> Institue .  Tous droits réservés.</span>
+                            Design:
+                            <a rel="sponsored" href="https://templatemo.com" target="_blank"> Etudients de Dr.Meya</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="js/custom.js"></script>
+
 </body>
 </html>

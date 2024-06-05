@@ -1,17 +1,18 @@
 <?php 
+session_start();
       include("db_conn.php");
       if(isset($_POST['submit'])){
         $email = $_POST['email'];
         $password = $_POST['password']; // Don't hash the password here
         
         // Query for admin table
-        $stmt_admin = $conn->prepare("SELECT email, `password` FROM adminstrateur WHERE Email=?");
+        $stmt_admin = $conn->prepare("SELECT id, email, `password` FROM adminstrateur WHERE Email=?");
         $stmt_admin->bind_param("s", $email);
         $stmt_admin->execute();
         $result_admin = $stmt_admin->get_result();
 
         // Query for users table
-        $stmt_users = $conn->prepare("SELECT email, `password` FROM users WHERE Email=?");
+        $stmt_users = $conn->prepare("SELECT  id, email, `password` FROM users WHERE Email=?");
         $stmt_users->bind_param("s", $email);
         $stmt_users->execute();
         $result_users = $stmt_users->get_result();
@@ -19,10 +20,11 @@
         if($result_admin->num_rows == 1){
           $row = $result_admin->fetch_assoc();
           $hashed_password = $row['password'];
-          if($password === $hashed_password){ 
+          if($password === $hashed_password){
             // Compare passwords directly for admin
-            $_SESSION['email'] = $email; // Store user's email in session
-            header("Location: admin/index.html"); // Redirect to admin page
+            $_SESSION['email'] = $email;// Store user's email in session
+            $_SESSION["id"]==$num["id"];
+            header("Location: admin/index.php"); // Redirect to admin page
             exit(); // Stop further execution
           
           } else {
@@ -37,6 +39,7 @@
           $hashed_password = $row['password'];
           if($password === $hashed_password){ // Compare hashed passwords for users
             $_SESSION['email'] = $email; // Store user's email in session
+            $_SESSION["id"]==$num["id"];
             header("Location: index.html"); // Redirect to client page
             exit(); // Stop further execution
          } else {
@@ -113,6 +116,7 @@
                     <!-- <p>I accept the <a href="#">Terms & Conditions</a></p> -->
                 </div>
                 <button type="submit" >S'isncrire</button>
+               <center> <a href="enterprise/enterprise.php">S'inscrire d enterpris </a></center>
             </form>
         </div>
 

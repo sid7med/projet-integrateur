@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -32,7 +34,7 @@ TemplateMo 578 First Portfolio
 https://templatemo.com/tm-578-first-portfolio
 
 -->
-<style>
+<style> 
 .btn {
     font-size: 16px;
     border: none;
@@ -44,8 +46,17 @@ https://templatemo.com/tm-578-first-portfolio
     margin-left: 20px;
     position: relative; 
   }
-  
-
+  .btn-a{
+    font-size: 20px;
+    border: none;
+    /* outline: none; */
+    color: green;
+    padding-left:20px;
+    /* background-color: inherit; */
+    font-family: initial;
+    margin-left: 20px;
+    position: relative;
+  }
   .btn {
     transition: transform 0.3s ease-in-out; 
   }
@@ -53,7 +64,10 @@ https://templatemo.com/tm-578-first-portfolio
   .btn {
     cursor: pointer;
   }
- 
+ .pi{
+    padding-bottom: 35px;
+    margin-right: 50px;
+ }
  
 
 </style>
@@ -84,11 +98,11 @@ https://templatemo.com/tm-578-first-portfolio
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <nav class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item ">
                         <a class="nav-link click-scroll" href="#section_1">Acceuil</a>
-                    <!-- <li class="nav-item ">
+                    <li class="nav-item ">
                         <div class="dropdown ">
                             <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 adminstration
@@ -99,33 +113,24 @@ https://templatemo.com/tm-578-first-portfolio
                               <li><a class="dropdown-item" href="gestion des entreprises/index.php">gestion des entreprises</a></li>
                             </ul>
                           </div>
-                    </li> -->
-
-                    <li class="nav-item">
-                        <!-- <a class="nav-link click-scroll" href="#section_2"></a> -->
-                        
-                        <div class="dropdown ">
-                            <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             Projets Integrateurs
-                            </button>
-                            <ul class="dropdown-menu">
-                            <li>
-                              <button  type="button" data-bs-toggle="dropdown" aria-expanded="false">Listes</button>
-                                   <li><a class="dropdown-item" href="#">PI S2</a></li> 
-                                   <li><a class="dropdown-item" href="#">PI S3</a></li> 
-                                   <li><a class="dropdown-item" href="#">PI S4</a></li> 
-                                   <li><a class="dropdown-item" href="#">PI S5</a></li> 
-                               </li>
-                            
-                        
-                              <li><a class="dropdown-item" href="#">Groupes</a></li>
-                            </ul>
-                          </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Stages  </a>
-                    </li> 
+                         <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
+                            <a href="indexGet.php" class="btn adm nav-link"  aria-expanded="false">
+                            Projets Integrateurs
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                         <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
+                            <a href="stage.php" class="btn adm nav-link"  aria-expanded="false">
+                            stage
+                            </a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a href="stage.php" class="nav-link click-scroll" > stage </a>
+                    </li> -->
 
                     <!-- <li class="nav-item"> -->
                         <!-- <a class="nav-link click-scroll" href="#section_4">Projects</a> -->
@@ -142,7 +147,7 @@ https://templatemo.com/tm-578-first-portfolio
                         Contactez SupNum
                     </a>
                 </div>
-            </div>
+            </>
 
         </div>
     </nav>
@@ -189,128 +194,8 @@ https://templatemo.com/tm-578-first-portfolio
                 <div class="row">
 
                     <div class="col-lg-6 col-12">
-                        <!-- <img src="images/couple-working-from-home-together-sofa.jpg" class="about-image img-fluid" -->
-                            <!-- alt=""> -->
-                    </div>
-
-                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                        <div class="about-thumb">
-
-                            <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
-                                <h2 class="text-white me-4 mb-0">Les PIs Availables</h2>
-
-                                <img src="images/happy-bearded-young-man.jpg" class="avatar-image img-fluid" alt="">
-                            </div>
-
-                            <!-- <h3 class="pt-2 mb-3">Un Peu Sur Les PIs </h3> -->
-
-                           
-
-                            <!-- <p>Vous êtes autorisé à utiliser ce projet pour vos sites Web.  -->
-                                <!-- Vous n'êtes pas autorisé à redistribuer le fichier ZIP du modèle sur un autre site Web.  -->
-                                <!-- S'il te plaît  </p> -->
-                                <!-- <a href="supnum.mr" target="_blank">  Contactez Nous    </a>  pour plus d'informations. -->
-                            <!-- </p<> -->
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="row pt-lg-5">
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
-
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
-                                    </div>
-                                </div>
-
-                                <!-- <p>You may want to explore Too CSS for great collection of free HTML CSS templates. -->
-                                <!-- </p> -->
-
-                                <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-globe"></i> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb services-thumb-up">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
-
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
-                                    </div>
-                                </div>
-
-                                <!-- <p>You can explore more CSS templates on TemplateMo website by browsing through -->
-                                    <!-- different tags.</p> -->
-
-                                <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-lightbulb"></i> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
-
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
-                                    </div>
-                                </div>
-
-                                <!-- <p>If you need a customized ecommerce website for your business, feel free to -->
-                                    <!-- discuss with me.</p> -->
-
-                                <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-phone"></i> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb services-thumb-up">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
-
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
-                                    </div>
-                                </div>
-
-                                <!-- <p>To list your website first on any search engine, we will work together. First -->
-                                    <!-- Portfolio is one-page CSS Template for free download.</p> -->
-
-                                <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-google"></i> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+                
+ 
 
 
 
@@ -425,172 +310,7 @@ https://templatemo.com/tm-578-first-portfolio
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-10 col-12 mx-auto">
-                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
-                            <!-- <img src="images/handshake-man-woman-after-signing-business-contract-closeup.jpg" -->
-                                <!-- class="avatar-image img-fluid" alt=""> -->
-
-                            <h2 class="text-white ms-4 mb-0">Les Stages Availables</h2>
-                        </div>
-
-                        <div class="row pt-lg-5">
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">stage 1</h3>
-
-                                        <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0"></p>
-                                            <div class="services-price-overlay"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- <p>You may want to explore Too CSS for great collection of free HTML CSS templates. -->
-                                    <!-- </p> -->
-
-                                    <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-globe"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb services-thumb-up">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">Stage 2</h3>
-
-                                        <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$1,200</p>
-                                            <div class="services-price-overlay"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- <p>You can explore more CSS templates on TemplateMo website by browsing through -->
-                                        <!-- different tags.</p> -->
-
-                                    <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-lightbulb"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">stage 3</h3>
-
-                                        <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$3,600</p>
-                                            <div class="services-price-overlay"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- <p>If you need a customized ecommerce website for your business, feel free to -->
-                                        <!-- discuss with me.</p> -->
-
-                                    <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-phone"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb services-thumb-up">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">stage 4</h3>
-
-                                        <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$1,450</p>
-                                            <div class="services-price-overlay"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- <p>To list your website first on any search engine, we will work together. First -->
-                                        <!-- Portfolio is one-page CSS Template for free download.</p> -->
-
-                                    <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
-
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-google"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="projects section-padding" id="section_4">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-8 col-md-8 col-12 ms-auto">
-                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
-                            <!-- <img src="images/white-desk-work-study-aesthetics.jpg" class="avatar-image img-fluid" -->
-                                <!-- alt=""> -->
-
-                            <h2 class="text-white ms-4 mb-0">Autres</h2>
-                        </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="projects-thumb">
-                            <div class="projects-info">
-                                <small class="projects-tag">mini projet 1</small>
-
-                                <h3 class="projects-title">NOM DU MP</h3>
-                            </div>
-
-                            <a href="images/projects/nikhil-KO4io-eCAXA-unsplash.jpg" class="popup-image">
-                                <img src="images/projects/nikhil-KO4io-eCAXA-unsplash.jpg"
-                                    class="projects-image img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="projects-thumb">
-                            <div class="projects-info">
-                                <small class="projects-tag">Mini Projet 2</small>
-
-                                <h3 class="projects-title">NOM DU MP</h3>
-                            </div>
-
-                            <a href="images/projects/the-5th-IQYR7N67dhM-unsplash.jpg" class="popup-image">
-                                <img src="images/projects/the-5th-IQYR7N67dhM-unsplash.jpg"
-                                    class="projects-image img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="projects-thumb">
-                            <div class="projects-info">
-                                <small class="projects-tag">Mini Projet 2</small>
-
-                                <h3 class="projects-title">NOM DU MP</h3>
-                            </div>
-
-                            <a href="images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg" class="popup-image">
-                                <img src="images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg"
-                                    class="projects-image img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+                   
 
         <section class="contact section-padding" id="section_5">
             <div class="container">
@@ -598,8 +318,8 @@ https://templatemo.com/tm-578-first-portfolio
 
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
-                            <img src="images/aerial-view-man-using-computer-laptop-wooden-table.jpg"
-                                class="avatar-image img-fluid" alt="">
+                            <!-- <img src="images/aerial-view-man-using-computer-laptop-wooden-table.jpg" -->
+                                <!-- class="avatar-image img-fluid" alt=""> -->
 
                             <h2 class="text-white ms-4 mb-0">Salut </h2>
                         </div>

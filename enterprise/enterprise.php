@@ -100,6 +100,18 @@ if(isset($_POST["submit"])) {
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <style>
+    body{
+        background-color: #14B789;
+    }
+    .wrapper .header ul li.active p{
+        background-color: #14B789;
+    }
+    .wrapper .header ul li.active:before{
+        background-color: #14B789;
+    }
+    .wrapper .btns_wrap .common_btns button {
+        background-color: #14B789;
+    }
         .dahan{
             width: auto;
             height: auto;

@@ -1,13 +1,15 @@
 <head>
     <style>
-        .d{
-            width:100px;
-            height: 100px;;
+        .d {
+            width: 100px;
+            height: 100px;
+            ;
             /* background-color:none; */
         }
-        img{
-            width:70px;
-            height:70px;
+
+        img {
+            width: 70px;
+            height: 70px;
         }
     </style>
 </head>
@@ -29,10 +31,10 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Output data of each row
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $imageName = $row["image_name"];
         echo "<div class=\"d\">";
-        echo '<img src="images/'.$imageName.'" alt="'.$imageName.'"><br></div>';
+        echo '<img src="images/' . $imageName . '" alt="' . $imageName . '"><br></div>';
     }
 } else {
     echo "0 results";

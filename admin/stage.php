@@ -1,0 +1,298 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+
+    <title>SupNum Plateform</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="css/magnific-popup.css" rel="stylesheet">
+
+    <link href="css/templatemo-first-portfolio-style.css" rel="stylesheet">
+
+    <!--
+
+TemplateMo 578 First Portfolio
+
+https://templatemo.com/tm-578-first-portfolio
+
+-->
+<style> 
+.btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 8px 8px;
+    background-color: inherit;
+    font-family: inherit;
+    margin-left: 20px;
+    position: relative; 
+  }
+  .btn-a{
+    font-size: 40px;
+    border: none;
+    /* outline: none; */
+    color: green;
+    padding-left:20px;
+    /* background-color: inherit; */
+    font-family: initial;
+    margin-left: 250px;
+    position: relative;
+  }
+  .btn {
+    transition: transform 0.3s ease-in-out; 
+  }
+
+  .btn {
+    cursor: pointer;
+  }
+ .pi{
+    padding-bottom: 35px;
+    margin-right: 50px;
+ }
+ .navbar-brand{
+    color: black;
+ }
+#stg{
+    color: black;
+}
+#aut{
+color: black;
+}
+#con{
+    color: black;
+}
+.test{
+    padding: 100px;
+}
+
+</style>
+</head>
+
+<body>
+
+    
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav"  aria-label="Toggle navigation">
+                <span class=""></span>
+            </button>
+
+            <a href="index.html" class="navbar-brand ">Gestion des PIs Et Stages</a>
+
+            <div class="d-flex align-items-center d-lg-none">
+                <i class="navbar-icon bi-telephone-plus me-3"></i>
+                <a class="custom-btn btn" href="#section_5">
+                    
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-5">
+                    <li class="nav-item ">
+                        <!-- <a class="nav-link click-scroll" href="#section_1">Acceuil</a> -->
+                    <li class="nav-item ">
+                        
+                            <a  class="btn adm nav-link" type="button" data-bs-toggle="dropdown" href="satge.php">
+                               Stage </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <!-- <a class="nav-link click-scroll" href="#section_2"></a> -->
+                        
+                       
+                            <a  class="btn adm nav-link" id="stg" data-bs-toggle="dropdown" href="projet_int.php">
+                             Projet Integrateurs </a> </li>
+                         
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="aut" href="#section_3"> Autres </a>
+                    </li> 
+
+                   
+
+                   
+                </ul>
+
+                <div class="">
+                  
+                    <a class="custom-btn btn" id="con" href="#section_5">
+                        Contactez SupNum
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+   
+
+        <section class="about section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="about section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+
+            <a class="test" href="../stage/t.php" >+Ajouter Un Stage</a>
+
+<?php
+  	$conn = new mysqli("localhost","root","","p_i");
+    if (!$conn) {
+   echo "Connection failed!"; }
+$sql_1 = "SELECT * FROM `internships`";
+$result = mysqli_query($conn, $sql_1);
+while ($row = mysqli_fetch_assoc($result)) { 
+    // Assuming the field you want to check is 'id'
+    $id = $row['id'];
+    if ($id % 2 == 0) {
+?>
+
+
+
+<div class="row pt-lg-5">
+                            <div class="col-lg-6 col-12">
+                                <div class="services-thumb">
+                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                        <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
+
+                                        <div class="services-price-wrap ms-auto">
+                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
+                                            <div class="services-price-overlay"></div>
+                                        </div>
+                                    </div>
+
+                                    <p><?php echo $row["description"]; ?>.</p>
+                                    <p><?php echo $row["technologies"]; ?></p>
+<br><br>
+                                    <a href="#" class="custom-btn custom-border-btn">Consulter</a>
+
+                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                                        <i class="services-icon bi-globe"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+<?php 
+    } else {
+?>
+
+
+<div class="col-lg-6 col-12">
+                                <div class="services-thumb services-thumb-up">
+                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                        <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
+
+                                        <div class="services-price-wrap ms-auto">
+                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
+                                            <div class="services-price-overlay"></div>
+                                        </div>
+                                    </div>
+
+                                    <p><?php echo $row["description"]; ?></p>
+                                    <p><?php echo $row["technologies"]; ?></p>
+                                    <br><br>
+                                    <a href="#" class="custom-btn custom-border-btn">Consulter</a>
+
+                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                                        <i class="services-icon bi-lightbulb"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+</div> 
+
+
+<?php 
+    } // End of if-else
+} // End of while loop
+?>
+
+
+
+
+ 
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+
+        
+                </div>
+            </div>
+        </section>
+
+
+                </div>
+            </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-12">
+                    <div class="copyright-text-wrap">
+                        <p class="mb-0">
+                            <span class="copyright-text">Copyright © 2024  <a href="supnum.mr">SupNum</a> Institue .  Tous droits réservés.</span>
+                            Design:
+                            <a rel="sponsored" href="https://templatemo.com" target="_blank"> Etudients de Dr.Meya</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>

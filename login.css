@@ -1,6 +1,6 @@
 body {
-  background: rgb(99, 140, 187);
-  background: radial-gradient(circle, rgb(10, 51, 98) 54%, rgba(10, 3, 60, 0.97) 100%);
+  background: #14B789;
+  /* background: radial-gradient(circle, rgb(10, 51, 98) 54%, rgba(10, 3, 60, 0.97) 100%); */
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0;
@@ -62,12 +62,12 @@ body {
 
 .reg-tab:hover,
 .login-tab:hover {
-  color: rgb(10, 51, 98);
-  border-bottom: 4px solid rgb(10, 51, 98);
+  color:#14B789;
+  border-bottom: 4px solid#14B789;
 }
 .active{
-  color: rgb(10, 51, 98);
-  border-bottom: 4px solid rgb(10, 51, 98);
+  color: #14B789;
+  border-bottom: 4px solid#14B789;
 }
 #login-form {
   display: block;
@@ -118,7 +118,7 @@ p {
 button {
   margin: 20px auto;
   font-size: 20px;
-  background-color: rgb(10, 51, 98);
+  background-color:#14B789;
   color: white;
   padding: 10px 45px;
   border-radius: 18px;

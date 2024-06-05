@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -32,7 +36,7 @@ TemplateMo 578 First Portfolio
 https://templatemo.com/tm-578-first-portfolio
 
 -->
-<style>
+<style> 
 .btn {
     font-size: 16px;
     border: none;
@@ -44,8 +48,19 @@ https://templatemo.com/tm-578-first-portfolio
     margin-left: 20px;
     position: relative; 
   }
-  
-
+  .btn-a{
+    font-size: 20px;
+    border: none;
+    /* outline: none; */
+    color: green;
+    padding-left:20px;
+    /* background-color: inherit; */
+    font-family: initial;
+    margin-left: 20px;
+    position: relative;
+    /* max-width: 250px;
+    margin-right:100px ; */
+  }
   .btn {
     transition: transform 0.3s ease-in-out; 
   }
@@ -53,7 +68,10 @@ https://templatemo.com/tm-578-first-portfolio
   .btn {
     cursor: pointer;
   }
- 
+ .pi{
+    padding-bottom: 35px;
+    margin-right: 50px;
+ }
  
 
 </style>
@@ -75,7 +93,7 @@ https://templatemo.com/tm-578-first-portfolio
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
+            <a href="index.php" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
 
             <div class="d-flex align-items-center d-lg-none">
                 <i class="navbar-icon bi-telephone-plus me-3"></i>
@@ -87,8 +105,8 @@ https://templatemo.com/tm-578-first-portfolio
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item ">
-                        <a class="nav-link click-scroll" href="#section_1">Acceuil</a>
-                    <!-- <li class="nav-item ">
+                        <a class="nav-link click-scroll" href="index.php">Acceuil</a>
+                    <li class="nav-item ">
                         <div class="dropdown ">
                             <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 adminstration
@@ -99,7 +117,7 @@ https://templatemo.com/tm-578-first-portfolio
                               <li><a class="dropdown-item" href="gestion des entreprises/index.php">gestion des entreprises</a></li>
                             </ul>
                           </div>
-                    </li> -->
+                    </li>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link click-scroll" href="#section_2"></a> -->
@@ -125,7 +143,7 @@ https://templatemo.com/tm-578-first-portfolio
 
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_3">Stages  </a>
-                    </li> 
+                    </li>
 
                     <!-- <li class="nav-item"> -->
                         <!-- <a class="nav-link click-scroll" href="#section_4">Projects</a> -->
@@ -192,14 +210,15 @@ https://templatemo.com/tm-578-first-portfolio
                         <!-- <img src="images/couple-working-from-home-together-sofa.jpg" class="about-image img-fluid" -->
                             <!-- alt=""> -->
                     </div>
-
+                        <a href="add.php" class="btn-a"> +Ajouter Un PI</a><br><br>
+                        <a href="../stage/nouveau-stager.php" class="btn-a"> +Ajouter Un Stage</a><br><br>
                     <div class="col-lg-6 col-12 mt-5 mt-lg-0">
                         <div class="about-thumb">
 
-                            <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
-                                <h2 class="text-white me-4 mb-0">Les PIs Availables</h2>
+                            <!-- <div class="section-title-wrap align-items-center "> -->
+                                <h2 class="pi"  >Les PIs Availables</h2>
 
-                                <img src="images/happy-bearded-young-man.jpg" class="avatar-image img-fluid" alt="">
+                                <!-- <img src="images/happy-bearded-young-man.jpg" class="avatar-image img-fluid" alt=""> -->
                             </div>
 
                             <!-- <h3 class="pt-2 mb-3">Un Peu Sur Les PIs </h3> -->
@@ -214,101 +233,76 @@ https://templatemo.com/tm-578-first-portfolio
                         </div>
                     </div>
 
+                    <?php
+                    	$conn = new mysqli("localhost","root","","p_i");
+                        if (!$conn) {
+                            echo "Connection failed!";
+                        }
+$sql_1 = "SELECT * FROM `p_i`";
+$result = mysqli_query($conn, $sql_1);
+while ($row = mysqli_fetch_assoc($result)) { 
+    // Assuming the field you want to check is 'id'
+    $id = $row['id'];
+    if ($id % 2 == 0) {
+?>
 
 
+<div class="row pt-lg-5">
+                            <div class="col-lg-6 col-12">
+                                <div class="services-thumb">
+                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                        <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
 
-                    <div class="row pt-lg-5">
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
+                                        <div class="services-price-wrap ms-auto">
+                                            <p class="services-price-text mb-0">$2,400</p>
+                                            <div class="services-price-overlay"></div>
+                                        </div>
+                                    </div>
 
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
+                                    <p><?php echo $row["description"]; ?>.</p>
+                                    <p><?php echo $row["technologie"]; ?></p>
+
+                                    <a href="#" class="custom-btn custom-border-btn btn mt-3">Consulter</a>
+
+                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                                        <i class="services-icon bi-globe"></i>
                                     </div>
                                 </div>
-
-                                <!-- <p>You may want to explore Too CSS for great collection of free HTML CSS templates. -->
-                                <!-- </p> -->
-
-                                <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-globe"></i> -->
-                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb services-thumb-up">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
+<?php
+    } else {
+?>
 
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
+
+<div class="col-lg-6 col-12">
+                                <div class="services-thumb services-thumb-up">
+                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                        <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
+
+                                        <div class="services-price-wrap ms-auto">
+                                            <p class="services-price-text mb-0">$1,200</p>
+                                            <div class="services-price-overlay"></div>
+                                        </div>
+                                    </div>
+
+                                    <p><?php echo $row["description"]; ?>.</p>
+                                    <p><?php echo $row["technologie"]; ?></p>
+                                    <a href="#" class="custom-btn custom-border-btn btn mt-3">Consulter</a>
+
+                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                                        <i class="services-icon bi-lightbulb"></i>
                                     </div>
                                 </div>
-
-                                <!-- <p>You can explore more CSS templates on TemplateMo website by browsing through -->
-                                    <!-- different tags.</p> -->
-
-                                <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-lightbulb"></i> -->
-                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
 
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
-                                    </div>
-                                </div>
 
-                                <!-- <p>If you need a customized ecommerce website for your business, feel free to -->
-                                    <!-- discuss with me.</p> -->
 
-                                <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-phone"></i> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="services-thumb services-thumb-up">
-                                <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                    <h3 class="mb-0">PI</h3>
-
-                                    <div class="services-price-wrap ms-auto">
-                                        <p class="services-price-text mb-0">S2</p>
-                                        <div class="services-price-overlay"></div>
-                                    </div>
-                                </div>
-
-                                <!-- <p>To list your website first on any search engine, we will work together. First -->
-                                    <!-- Portfolio is one-page CSS Template for free download.</p> -->
-
-                                <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
-
-                                <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                    <!-- <i class="services-icon bi-google"></i> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<?php
+    } // End of if-else
+} // End of while loop
+?>
 
 
 
@@ -437,21 +431,21 @@ https://templatemo.com/tm-578-first-portfolio
                             <div class="col-lg-6 col-12">
                                 <div class="services-thumb">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">stage 1</h3>
+                                        <h3 class="mb-0">Titre de Stage</h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0"></p>
-                                            <div class="services-price-overlay"></div>
+                                            <p class="services-price-text mb-0">Encadrer</p>
+                                           
                                         </div>
                                     </div>
 
                                     <!-- <p>You may want to explore Too CSS for great collection of free HTML CSS templates. -->
                                     <!-- </p> -->
-
+                                        Description
                                     <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
 
                                     <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-globe"></i>
+                                      Technologie  <!-- <i class="services-icon bi-globe"></i> -->
                                     </div>
                                 </div>
                             </div>
@@ -459,21 +453,21 @@ https://templatemo.com/tm-578-first-portfolio
                             <div class="col-lg-6 col-12">
                                 <div class="services-thumb services-thumb-up">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">Stage 2</h3>
+                                        <h3 class="mb-0">Titre de Stage</h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$1,200</p>
-                                            <div class="services-price-overlay"></div>
+                                            <p class="services-price-text mb-0">Encadrer</p>
+                                            <!-- <div class="services-price-overlay"></div> -->
                                         </div>
                                     </div>
 
                                     <!-- <p>You can explore more CSS templates on TemplateMo website by browsing through -->
                                         <!-- different tags.</p> -->
-
+                                        Description
                                     <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
 
                                     <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-lightbulb"></i>
+                                       Technologie <!-- <i class="services-icon bi-lightbulb"></i> -->
                                     </div>
                                 </div>
                             </div>
@@ -481,21 +475,21 @@ https://templatemo.com/tm-578-first-portfolio
                             <div class="col-lg-6 col-12">
                                 <div class="services-thumb">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">stage 3</h3>
+                                        <h3 class="mb-0">Titre de Stage</h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$3,600</p>
-                                            <div class="services-price-overlay"></div>
+                                            <p class="services-price-text mb-0">Encadrer</p>
+                                            <!-- <div class="services-price-overlay"></div> -->
                                         </div>
                                     </div>
 
                                     <!-- <p>If you need a customized ecommerce website for your business, feel free to -->
                                         <!-- discuss with me.</p> -->
-
+                                        Description
                                     <!-- <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a> -->
 
                                     <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-phone"></i>
+                                        Technologie <!-- <i class="services-icon bi-phone"></i> -->
                                     </div>
                                 </div>
                             </div>
@@ -503,21 +497,21 @@ https://templatemo.com/tm-578-first-portfolio
                             <div class="col-lg-6 col-12">
                                 <div class="services-thumb services-thumb-up">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0">stage 4</h3>
+                                        <h3 class="mb-0">Titre de Stage</h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$1,450</p>
-                                            <div class="services-price-overlay"></div>
+                                            <p class="services-price-text mb-0">Encadrer</p>
+                                            <!-- <div class="services-price-overlay"></div> -->
                                         </div>
                                     </div>
 
                                     <!-- <p>To list your website first on any search engine, we will work together. First -->
                                         <!-- Portfolio is one-page CSS Template for free download.</p> -->
-
+                                        Description
                                     <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
 
                                     <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-google"></i>
+                                        Technologie<!-- <i class="services-icon bi-google"></i> -->
                                     </div>
                                 </div>
                             </div>
