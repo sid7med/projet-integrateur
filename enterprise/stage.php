@@ -1,9 +1,8 @@
-
 <?php
 session_start();
 include "../db_conn.php";
 
-if (strlen($_SESSION['admin']==0)) {
+if (strlen($_SESSION['ent']==0)) {
   header('location: ../logout.php');
   } else{
 
@@ -77,8 +76,26 @@ https://templatemo.com/tm-578-first-portfolio
     padding-bottom: 35px;
     margin-right: 50px;
  }
- 
+ .navbar-brand{
+    color: black;
+ }
+#stg{
+    color: black;
+}
+#aut{
+color: black;
+}
+#con{
+    color: black;
+}
+.test{
+    padding: 100px;
+}
 
+.services-thumb-up{
+    bottom: 0px;
+    margin-top: 100px;
+}
 </style>
 </head>
 
@@ -86,10 +103,9 @@ https://templatemo.com/tm-578-first-portfolio
 
     
 
-   <?php
-include "nav.php";
+ <?php
+ include "nav.php"; ?>
 
-   ?>
    
 
         <section class="about section-padding" id="section_2">
@@ -110,37 +126,38 @@ include "nav.php";
                         </div>
                     </div>
 
-            <a class="btn-a" href="add.php" >+Ajouter Un PI</a>
+            <a class="test" href="t.php" >+Ajouter Un Stage</a>
 
 <?php
   	$conn = new mysqli("localhost","root","","p_i");
     if (!$conn) {
    echo "Connection failed!"; }
-$sql_1 = "SELECT * FROM `p_i`";
+$sql_1 = "SELECT * FROM `internships`";
 $result = mysqli_query($conn, $sql_1);
 while ($row = mysqli_fetch_assoc($result)) { 
     // Assuming the field you want to check is 'id'
     $id = $row['id'];
-    if ($id % 2 != 0) {
+    if ($id % 2 == 0) {
 ?>
+
 
 
 <div class="row pt-lg-5">
                             <div class="col-lg-6 col-12">
                                 <div class="services-thumb">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
+                                        <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$2,400</p>
+                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
                                             <div class="services-price-overlay"></div>
                                         </div>
                                     </div>
 
                                     <p><?php echo $row["description"]; ?>.</p>
-                                    <p><?php echo $row["technologie"]; ?></p>
-
-                                    <a href="#" class="custom-btn custom-border-btn btn mt-3">Consulter</a>
+                                    <p><?php echo $row["technologies"]; ?></p>
+<br><br>
+                                    <a href="#" class="custom-btn custom-border-btn">Consulter</a>
 
                                     <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                                         <i class="services-icon bi-globe"></i>
@@ -156,17 +173,18 @@ while ($row = mysqli_fetch_assoc($result)) {
 <div class="col-lg-6 col-12">
                                 <div class="services-thumb services-thumb-up">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
+                                        <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$1,200</p>
+                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
                                             <div class="services-price-overlay"></div>
                                         </div>
                                     </div>
 
-                                    <p><?php echo $row["description"]; ?>.</p>
-                                    <p><?php echo $row["technologie"]; ?></p>
-                                    <a href="#" class="custom-btn custom-border-btn btn mt-3">Consulter</a>
+                                    <p><?php echo $row["description"]; ?></p>
+                                    <p><?php echo $row["technologies"]; ?></p>
+                                    <br><br>
+                                    <a href="#" class="custom-btn custom-border-btn">Consulter</a>
 
                                     <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                                         <i class="services-icon bi-lightbulb"></i>
@@ -185,7 +203,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 
-
+ 
 
 
 
@@ -237,4 +255,4 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </body>
 </html>
-<?php }?>
+<?php } ?>

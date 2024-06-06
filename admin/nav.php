@@ -70,9 +70,8 @@ https://templatemo.com/tm-578-first-portfolio
    .navbar .custom-btn{
     border-color:#14b789;
     color:  #14b789;
-   }  
-   
-   
+    
+   }
 
 </style>
 
@@ -93,7 +92,7 @@ https://templatemo.com/tm-578-first-portfolio
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a href="index.php" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
+            <a href="#" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
 
             <div class="d-flex align-items-center d-lg-none">
                 <i class="navbar-icon bi-telephone-plus me-3"></i>
@@ -105,16 +104,28 @@ https://templatemo.com/tm-578-first-portfolio
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item ">
-                        <a class="nav-link click-scroll" href="../index.php">Acceuil</a>
-                  
-
-                    <li class="nav-item">
-                        <!-- <a class="nav-link click-scroll" href="#section_2"></a> -->
-                      
+                        <a class="nav-link click-scroll" href="index.php">Acceuil</a>
+                    <li class="nav-item ">
+                        <div class="dropdown ">
+                            <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                adminstration
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="gestion des étudiants/index.php">gestion des étudiants</a></li>
+                              <li><a class="dropdown-item" href="#">gestion des user</a></li>
+                              <li><a class="dropdown-item" href="gestion des entreprises/index.php">gestion des entreprises</a></li>
+                            </ul>
+                          </div>
                     </li>
 
+                    
+
+                    
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="../index.php">Stages  </a>
+                        <a class="nav-link click-scroll" href="indexGET.php">Projets Integrateurs  </a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="stage.php">Stages  </a>
                     </li> 
 
                     <!-- <li class="nav-item"> -->
@@ -122,13 +133,13 @@ https://templatemo.com/tm-578-first-portfolio
                     <!-- </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="../index.php">Autres</a>
+                        <a class="nav-link click-scroll" href="index.php">Autres</a>
                     </li>
                 </ul>
 
                 <div class="d-lg-flex align-items-center d-none ms-auto">
                     <!-- <i class="navbar-icon bi-telephone-plus me-3"><a href="+222 37677296"></a></i> -->
-                    <a class="custom-btn btn" href="../index.php">
+                    <a class="custom-btn btn" href="index.php">
                         Contactez SupNum
                     </a>
                 </div>

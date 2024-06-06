@@ -1,4 +1,13 @@
 
+<?php
+session_start();
+include "../db_conn.php";
+
+if (strlen($_SESSION['admin']==0)) {
+  header('location: ../logout.php');
+  } else{
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -13,11 +22,11 @@
     <title>SupNum Plateform</title>
 
     <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -74,7 +83,7 @@ https://templatemo.com/tm-578-first-portfolio
 </head>
 
 <body>
-
+<h1><a href="../logout.php">by</a></h1>
     <section class="preloader">
         <div class="spinner">
             <span class="spinner-rotate"></span>
@@ -509,3 +518,4 @@ https://templatemo.com/tm-578-first-portfolio
 
 </body>
 </html>
+<?php } ?>

@@ -1,7 +1,16 @@
 <?php
-// include "nav.php";
-// echo"<br><br><br><br><br>";
-// include " ../admin/gestion des entreprises/nav.php ";
+session_start();
+include "../db_conn.php";
+
+if (strlen($_SESSION['ent']==0)) {
+  header('location: ../logout.php');
+  } else{
+
+?>
+
+
+<?php
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
@@ -51,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php
-include "tira.php";
+include "nav.php";
 echo"<br><br><br><br>";
 ?>
 <!DOCTYPE html>
@@ -209,3 +218,4 @@ echo"<br><br><br><br>";
                 </div>
             </form>
         </div>
+<?php }?>

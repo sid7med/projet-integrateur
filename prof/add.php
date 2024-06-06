@@ -1,19 +1,18 @@
 <?php
+session_start();
+include "../db_conn.php";
+
+if (strlen($_SESSION['prof']==0)) {
+  header('location: ../logout.php');
+  } else{
+//  include "nav.php";
+
 $conn = mysqli_connect("localhost", "root", "", "p_i");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 $sql = "SELECT * FROM `professeur`";
 $res = mysqli_query($conn, $sql);
-?>
-<?php
-session_start();
-include "../db_conn.php";
-
-if (strlen($_SESSION['admin']==0)) {
-  header('location: ../logout.php');
-  } else{
-
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +27,7 @@ if (strlen($_SESSION['admin']==0)) {
         body {
             background-color: #f8f9fa;
         }
-        .container {
-            margin-top: 50px;
-        }
+        
         .form-floating {
             margin-bottom: 20px;
         }
@@ -44,10 +41,25 @@ if (strlen($_SESSION['admin']==0)) {
             color: var(--p-color);
             
         }
+        .navbar-brand{
+            color: black;
+        }
+        .navbar .custom-btn{
+            border-color: #14b789;
+    color: #14b789;
+        }
+        form{
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+        .navbar{
+            margin-top: -10px;
+        }
+      
     </style>
 </head>
 <body >
-    <div class="container">
+  <center>  <div class="container">
         <div class="col-lg-6 col-12 mt-5 mt-lg-0">
             <form action="ins.php" method="post" class="custom-form contact-form" role="form" style="margin-left:50px;">
                 <div class="row">
@@ -98,11 +110,11 @@ if (strlen($_SESSION['admin']==0)) {
                 </div>
             </form>
         </div>
-    </di>
+    </div>
+    </center>
 </body>
 </html>
 <?php
   }
 mysqli_close($conn);
-
 ?>

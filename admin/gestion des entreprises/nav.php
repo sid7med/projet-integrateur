@@ -118,33 +118,13 @@ https://templatemo.com/tm-578-first-portfolio
                           </div>
                     </li>
 
-                    <li class="nav-item">
-                        <!-- <a class="nav-link click-scroll" href="#section_2"></a> -->
-                        
-                        <!-- <div class="dropdown ">
-                            <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             Projets Integrateurs
-                            </button>
-                            <ul class="dropdown-menu">
-                            <li>
-                              <button  type="button" data-bs-toggle="dropdown" aria-expanded="false">Listes</button>
-                                   <li><a class="dropdown-item" href="#">PI S2</a></li> 
-                                   <li><a class="dropdown-item" href="#">PI S3</a></li> 
-                                   <li><a class="dropdown-item" href="#">PI S4</a></li> 
-                                   <li><a class="dropdown-item" href="#">PI S5</a></li> 
-                               </li>
-                            
-                        
-                              <li><a class="dropdown-item" href="#">Groupes</a></li>
-                            </ul>
-                          </div>
-                    </li> -->
+                  
 
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="../indexGET.php">Projets Integrateurs  </a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="../index.php">Stages  </a>
+                        <a class="nav-link click-scroll" href="../stage.php">Stages  </a>
                     </li> 
 
                     <!-- <li class="nav-item"> -->

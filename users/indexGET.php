@@ -1,13 +1,13 @@
-
 <?php
 session_start();
 include "../db_conn.php";
 
-if (strlen($_SESSION['admin']==0)) {
+if (strlen($_SESSION['user']==0)) {
   header('location: ../logout.php');
   } else{
 
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -77,40 +77,53 @@ https://templatemo.com/tm-578-first-portfolio
     padding-bottom: 35px;
     margin-right: 50px;
  }
- 
+ .navbar-brand{
+    color: black;
+ }
+#stg{
+    color: black;
+}
+#aut{
+color: black;
+}
+#con{
+    color: black;
+}
+.test{
+    padding: 100px;
+}
+.services-thumb{
 
+    margin-top: 100px;
+}
+.navbar-nav .nav-link{
+    color:  var(--p-color);
+}
+.btn-primary {
+    color: #fff;
+    background-color:#14b789;
+    border-color:#14b789;
+}
 </style>
 </head>
 
 <body>
 
     
+<?php
+  include "nav.php";
+echo"<br><br><br><br><br><br>";
+if (isset($_SESSION['lead']) && $_SESSION['lead'] == 1) {?>
+    <style>
+    .btn-primary {
+    color: #fff;
+    background-color:#14b789;
+    border-color:#14b789;
+}
+</style>
+<a href="#" class="btn btn-primary mb-3 ">ajouter un group</a>
+<?php } ?>
 
-   <?php
-include "nav.php";
-
-   ?>
-   
-
-        <section class="about section-padding" id="section_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <section class="about section-padding" id="section_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        </div>
-                            </div>
-                        </div>
-                    </div>
-
-            <a class="btn-a" href="add.php" >+Ajouter Un PI</a>
 
 <?php
   	$conn = new mysqli("localhost","root","","p_i");

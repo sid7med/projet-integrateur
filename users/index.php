@@ -1,4 +1,12 @@
+<?php
+session_start();
+include "../db_conn.php";
 
+if (strlen($_SESSION['user']==0)) {
+  header('location: ../logout.php');
+  } else{
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -13,11 +21,11 @@
     <title>SupNum Plateform</title>
 
     <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -72,7 +80,7 @@ https://templatemo.com/tm-578-first-portfolio
 
 </style>
 </head>
-
+<!-- <h1><a href="../logout.php">bay</a></h1> -->
 <body>
 
     <section class="preloader">
@@ -106,14 +114,20 @@ https://templatemo.com/tm-578-first-portfolio
 
                     <li class="nav-item">
                          <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
-                            <a href="admin/indexGet.php" class="btn adm nav-link"  aria-expanded="false">
+                            <a href="indexGet.php" class="btn adm nav-link"  aria-expanded="false">
                             Projets Integrateurs
                             </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="indexGET.php"> stage </a>
-                    </li> 
+                         <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
+                            <a href="stage.php" class="btn adm nav-link"  aria-expanded="false">
+                            stage
+                            </a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a href="stage.php" class="nav-link click-scroll" > stage </a>
+                    </li> -->
 
                     <!-- <li class="nav-item"> -->
                         <!-- <a class="nav-link click-scroll" href="#section_4">Projects</a> -->
@@ -492,3 +506,4 @@ https://templatemo.com/tm-578-first-portfolio
 
 </body>
 </html>
+<?php } ?>

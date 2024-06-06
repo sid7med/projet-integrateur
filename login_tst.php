@@ -1,3 +1,50 @@
+<?php
+session_start();
+      include("db_conn.php");
+   
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $email = mysqli_real_escape_string($conn, $email);
+    $sql = "SELECT id, email, `password`, `role` FROM users WHERE email = '$email'
+    and `password` = '$password'";
+    $res = mysqli_query($conn, $sql);
+
+   
+    if (mysqli_num_rows($res) > 0) {
+        $row = mysqli_fetch_assoc($res);
+
+   
+            if ($row['role'] == 1) {
+                $_SESSION['admin']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location:admin/index.php");
+            } elseif ($row['role'] == 2) {
+                
+                $_SESSION['prof']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location:prof/index.php");
+            } elseif ($row['role'] == 3) {
+                
+                $_SESSION['user']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location:user/index.php");
+            } else {
+                
+                $_SESSION['ent']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location:enterprise/index.php");
+            }
+       
+    } else {
+        echo "Aucun utilisateur trouvé avec cet email.";
+    }
+
+    // Fermer la connexion
+    mysqli_close($conn);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

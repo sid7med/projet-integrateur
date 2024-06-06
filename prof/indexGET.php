@@ -1,9 +1,8 @@
-
 <?php
 session_start();
 include "../db_conn.php";
 
-if (strlen($_SESSION['admin']==0)) {
+if (strlen($_SESSION['prof']==0)) {
   header('location: ../logout.php');
   } else{
 
@@ -237,4 +236,4 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </body>
 </html>
-<?php }?>
+<?php } ?>

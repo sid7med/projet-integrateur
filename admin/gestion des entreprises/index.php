@@ -93,7 +93,14 @@ https://templatemo.com/tm-578-first-portfolio
     border-color: var(--secondary-color);
     color: var(--secondary-color);
 }
- 
+.btn-primary {
+    color: #fff;
+    background-color:#14b789;
+    border-color:#14b789;
+}
+table.dataTable thead>tr>th.dt-orderable-asc, table.dataTable thead>tr>th.dt-orderable-desc, table.dataTable thead>tr>td.dt-orderable-asc, table.dataTable thead>tr>td.dt-orderable-desc {
+  background-color:#14b789 ;
+}
 </style>
 </head>
 

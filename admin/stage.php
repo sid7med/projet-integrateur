@@ -1,3 +1,12 @@
+<?php
+session_start();
+include "../db_conn.php";
+
+if (strlen($_SESSION['admin']==0)) {
+  header('location: ../logout.php');
+  } else{
+
+?>
 
 
 <!doctype html>
@@ -84,68 +93,17 @@ color: black;
     padding: 100px;
 }
 
+.services-thumb-up{
+    bottom: 0px;
+    margin-top: 100px;
+}
+
 </style>
 </head>
 
 <body>
+<?php include"nav.php" ?>
 
-    
-
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav"  aria-label="Toggle navigation">
-                <span class=""></span>
-            </button>
-
-            <a href="index.html" class="navbar-brand ">Gestion des PIs Et Stages</a>
-
-            <div class="d-flex align-items-center d-lg-none">
-                <i class="navbar-icon bi-telephone-plus me-3"></i>
-                <a class="custom-btn btn" href="#section_5">
-                    
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-lg-5">
-                    <li class="nav-item ">
-                        <!-- <a class="nav-link click-scroll" href="#section_1">Acceuil</a> -->
-                    <li class="nav-item ">
-                        
-                            <a  class="btn adm nav-link" type="button" data-bs-toggle="dropdown" href="satge.php">
-                               Stage </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <!-- <a class="nav-link click-scroll" href="#section_2"></a> -->
-                        
-                       
-                            <a  class="btn adm nav-link" id="stg" data-bs-toggle="dropdown" href="projet_int.php">
-                             Projet Integrateurs </a> </li>
-                         
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" id="aut" href="#section_3"> Autres </a>
-                    </li> 
-
-                   
-
-                   
-                </ul>
-
-                <div class="">
-                  
-                    <a class="custom-btn btn" id="con" href="#section_5">
-                        Contactez SupNum
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </nav>
 
    
 
@@ -296,3 +254,4 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </body>
 </html>
+<?php } ?>

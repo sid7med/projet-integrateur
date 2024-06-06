@@ -48,27 +48,25 @@ echo"<br><br><br><br><br><br>";
     border-color: var(--secondary-color);
     color: var(--secondary-color);
 }
-
+.btn-primary {
+    color: #fff;
+    background-color:#14b789;
+    border-color:#14b789;
+}
+table.dataTable thead>tr>th.dt-orderable-asc, table.dataTable thead>tr>th.dt-orderable-desc, table.dataTable thead>tr>td.dt-orderable-asc, table.dataTable thead>tr>td.dt-orderable-desc {
+  background-color:#14b789 ;
+}
 
 </style>
 </head>
 
-
-
+<body>
 
 <?php
 include "db_conn.php";
 ?>
 
-<!-- <head>
-  <meta charset="UTF-8">
- 
- 
-</head> -->
-
-
-  
-  <div class="container">
+<div class="container">
     <?php
     if (isset($_GET["msg"])) {
       $msg = $_GET["msg"];
@@ -78,16 +76,17 @@ include "db_conn.php";
     </div>';
     }
     ?>
-    <a href="add-new.php" class="btn btn-primary mb-3">ajouter un nouveau</a>
+    <a href="add-new.php" class="btn btn-primary mb-3">Ajouter un nouveau</a>
 
     <table id="example" class="table table-hover text-center">
-      <thead class="table-primary">
+      <thead class="table">
         <tr>
-          <th scope="col">matricule</th>
-          <th scope="col">nom</th>
-          <th scope="col">prenom</th>
-          <th scope="col">niveaux</th>
-          <th scope="col">semester</th>
+          <th scope="col">Matricule</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Niveaux</th>
+          <th scope="col">Semester</th>
+          <th scope="col">Leader</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -97,12 +96,23 @@ include "db_conn.php";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
+
           <tr>
             <td><?php echo $row["matricule"] ?></td>
             <td><?php echo $row["nom"] ?></td>
             <td><?php echo $row["prenom"] ?></td>
             <td><?php echo $row["niveaux"] ?></td>
             <td><?php echo $row["semester"] ?></td>
+            <td>
+              <form action="" method="post" class="lead-form">
+                <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
+                <?php if ($row["lead"] == 0): ?>
+                  <input type="submit" name="action" class="btn btn-success" value="ajouter">
+                <?php else: ?>
+                  <input type="submit" name="action" class="btn btn-warning" value="annuler">
+                <?php endif; ?>
+              </form>
+            </td>
             <td>
               <a href="edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
               <!-- Bouton de suppression avec modal -->
@@ -141,57 +151,54 @@ include "db_conn.php";
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <?php
-include "db_conn.php";
-
-// Vérifiez si des données ont été soumises via le formulaire
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifiez si au moins l'un des champs a été soumis
-    if(isset($_POST['nom']) || isset($_POST['prenom']) || isset($_POST['matricule']) || isset($_POST['Niveaux']) || isset($_POST['Semestre']))  {
-        // Affichez la confirmation de la modification avec Bootstrap
-        echo '<div class="alert alert-success alert-dismissible fade show" >
-                Les informations ont été modifiées avec succès !
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && isset($_POST["id"])) {
+    $id = $_POST["id"];
+    $new_lead_status = ($_POST["action"] === "ajouter") ? 1 : 0;
+    $sql = "UPDATE `etudiant` SET `lead` = $new_lead_status WHERE `id` = $id";
+    mysqli_query($conn, $sql);
+    ob_start();
+    // Check if headers have already been sent
+    if (!headers_sent()) {
+        header("Location:index.php");
+    } else {
+        echo "<script>window.location.href = 'index.php';</script>";
     }
+    ob_end_flush();
+    exit;
+
 }
-
-
 ?>
+
 <script src="js/jquery.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.5/datatables.min.js"></script>
 <script type="text/javascript">
     $('#example').DataTable({});
-  </script>
+</script>
 
-
-        
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-12">
-                    <div class="copyright-text-wrap">
-                        <p class="mb-0">
-                            <span class="copyright-text">Copyright © 2024  <a href="supnum.mr">SupNum</a> Institue .  Tous droits réservés.</span>
-                            Design:
-                            <a rel="sponsored" href="https://templatemo.com" target="_blank"> Etudients de Dr.Meya</a>
-                        </p>
-                    </div>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                <div class="copyright-text-wrap">
+                    <p class="mb-0">
+                        <span class="copyright-text">Copyright © 2024 <a href="supnum.mr">SupNum</a> Institue. Tous droits réservés.</span>
+                        Design:
+                        <a rel="sponsored" href="https://templatemo.com" target="_blank"> Etudiants de Dr.Meya</a>
+                    </p>
                 </div>
-
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
-    <script src="js/custom.js"></script>
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/click-scroll.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
+<script src="js/custom.js"></script>
 
 </body>
 </html>

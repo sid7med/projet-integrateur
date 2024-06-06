@@ -1,62 +1,57 @@
-<?php 
+<?php
 session_start();
       include("db_conn.php");
-      if(isset($_POST['submit'])){
-        $email = $_POST['email'];
-        $password = $_POST['password']; // Don't hash the password here
-        
-        // Query for admin table
-        $stmt_admin = $conn->prepare("SELECT id, email, `password` FROM adminstrateur WHERE Email=?");
-        $stmt_admin->bind_param("s", $email);
-        $stmt_admin->execute();
-        $result_admin = $stmt_admin->get_result();
+   
 
-        // Query for users table
-        $stmt_users = $conn->prepare("SELECT  id, email, `password` FROM users WHERE Email=?");
-        $stmt_users->bind_param("s", $email);
-        $stmt_users->execute();
-        $result_users = $stmt_users->get_result();
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $email = mysqli_real_escape_string($conn, $email);
+    $sql = "SELECT id, email, `password`, `role` FROM users WHERE email = '$email'
+    and `password` = '$password'";
+    $res = mysqli_query($conn, $sql);
 
-        if($result_admin->num_rows == 1){
-          $row = $result_admin->fetch_assoc();
-          $hashed_password = $row['password'];
-          if($password === $hashed_password){
-            // Compare passwords directly for admin
-            $_SESSION['email'] = $email;// Store user's email in session
-            $_SESSION["id"]==$num["id"];
-            header("Location: admin/index.php"); // Redirect to admin page
-            exit(); // Stop further execution
-          
-          } else {
-            echo "<div class='message'>;
-                   <p>Wrong Password</p>
-                  </div> <br>";
-            echo "<a href='login.php'><button class='btn'>Go Back</button>";
-          }
-        } 
-        elseif ($result_users->num_rows == 1) {
-          $row = $result_users->fetch_assoc();
-          $hashed_password = $row['password'];
-          if($password === $hashed_password){ // Compare hashed passwords for users
-            $_SESSION['email'] = $email; // Store user's email in session
-            $_SESSION["id"]==$num["id"];
-            header("Location: index.html"); // Redirect to client page
-            exit(); // Stop further execution
-         } else {
-            echo "<div class='message'>
-                   <p>Wrong Password</p>
-                  </div> <br>";
-            echo "<a href='login.php'><button class='btn'>Go Back</button>";
-          }
-        } else {
-          echo "<div class='message'>
-                 <p>No user found with that email</p>
-                </div> <br>";
-          echo "<a href='login.php'><button class='btn'>Go Back</button>";
-        }
-      }
+    
+$sql_1="SELECT lead from etudiant WHERE matricule=LEFT('$email', 5) ";
+$res_1=mysqli_query($conn,$sql_1);
+$row_1 = mysqli_fetch_assoc($res_1);
 
-      $conn->close();
+$leader=$row_1["lead"];
+   
+    if (mysqli_num_rows($res) > 0) {
+        $row = mysqli_fetch_assoc($res);
+
+   
+            if ($row['role'] == 1) {
+                $_SESSION['admin']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location: admin/index.php");
+            } elseif ($row['role'] == 2) {
+                
+                $_SESSION['prof']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location: prof/index.php");
+            } elseif ($row['role'] == 3) {
+                
+                $_SESSION['user']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                $_SESSION['lead']=$leader;
+
+                header("location:users/index.php");
+            } else {
+                
+                $_SESSION['ent']=$row['id'];
+                $_SESSION['role']=$row['role'];
+                header("location:enterprise/index.php");
+            }
+       
+    } else {
+        echo "Aucun utilisateur trouvé avec cet email.";
+    }
+
+    // Fermer la connexion
+    mysqli_close($conn);
+}
     ?>
 
              
@@ -146,3 +141,4 @@ session_start();
 </body>
 
 </html>
+

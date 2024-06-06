@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 08 mai 2024 à 03:20
+-- Généré le : jeu. 06 juin 2024 à 00:03
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -71,7 +71,12 @@ CREATE TABLE `encadrant` (
 --
 
 INSERT INTO `encadrant` (`id`, `id_professeur`, `id_pi`) VALUES
-(1, 3, 16);
+(7, 4, 23),
+(8, 3, 29),
+(9, 3, 30),
+(10, 3, 31),
+(11, 4, 31),
+(12, 4, 32);
 
 -- --------------------------------------------------------
 
@@ -89,6 +94,20 @@ CREATE TABLE `entreprise` (
   `logo` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `entreprise`
+--
+
+INSERT INTO `entreprise` (`id`, `Nom_enterprise`, `Adresse`, `Domaine_activite`, `Email`, `Nom_profitionelle`, `logo`) VALUES
+(0, 'zeini cheikh', '42M5+PGV, Mauritanie', '', '', '', ''),
+(0, '', '', '', '', '', ''),
+(0, 'BMCI', '42M5+PGV, Mauritanie', '?', 'test.@gmail.com', 'zeini cheikh', ''),
+(0, 'zeini cheikh', '42M5+PGV, Mauritanie', '?', 'test.@gmail.com', 'zeini cheikh', ''),
+(0, 'zeini cheikh', '42M5+PGV, Mauritanie', '?', 'test.@gmail.com', 'zeini cheikh', ''),
+(0, 'pubg', '42M5+PGV, Mauritanie', '?', 'pubg@gmail.mr', 'zeini cheikh', ''),
+(0, 'FIFA', '42M5+PGV, Mauritanie', 'Game', 'fifa@gmail.com', 'zeini cheikh', ''),
+(0, 'ROKSTAR', '42M5+PGV, Mauritanie', 'game', 'rokstar@gmail.cpm', 'zeini cheikh', '');
+
 -- --------------------------------------------------------
 
 --
@@ -101,18 +120,75 @@ CREATE TABLE `etudiant` (
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(30) DEFAULT NULL,
   `niveaux` varchar(2) DEFAULT NULL CHECK (`niveaux` in ('l1','l2','l3')),
-  `semester` varchar(2) DEFAULT NULL CHECK (`semester` in ('s1','s2','s3','s4','s5','s6'))
+  `semester` varchar(2) DEFAULT NULL CHECK (`semester` in ('s1','s2','s3','s4','s5','s6')),
+  `lead` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `etudiant`
 --
 
-INSERT INTO `etudiant` (`id`, `matricule`, `nom`, `prenom`, `niveaux`, `semester`) VALUES
-(31, 23025, 'zeiny', 'cheikh', 'l1', 's2'),
-(32, 23042, 'zeiny', 'cheikh', 'l1', 's1'),
-(33, 23043, 'azize', 'df8iuhckxz', 'l1', 's5'),
-(34, 23027, 'ahmed', 'babw', 'l3', 's5');
+INSERT INTO `etudiant` (`id`, `matricule`, `nom`, `prenom`, `niveaux`, `semester`, `lead`) VALUES
+(31, 23025, 'zeiny', 'cheikh', 'l1', 's1', 0),
+(32, 23042, 'zeiny', 'cheikh', 'l1', 's1', 0),
+(33, 23043, 'azize', 'df8iuhckxz', 'l1', 's5', 0),
+(34, 23027, 'ahmed', 'babw', 'l3', 's5', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `group`
+--
+
+CREATE TABLE `group` (
+  `id` int(11) NOT NULL,
+  `id_etudiant` int(11) DEFAULT NULL,
+  `niveaux` enum('L1','L2','L3') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `internships`
+--
+
+CREATE TABLE `internships` (
+  `id` int(11) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `internship_subject` varchar(255) NOT NULL,
+  `field` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `duration` varchar(255) NOT NULL,
+  `technologies` varchar(255) NOT NULL,
+  `remuneration` varchar(255) NOT NULL,
+  `deliverables` varchar(255) NOT NULL,
+  `num_interns` int(11) NOT NULL,
+  `applicant_comment` varchar(255) NOT NULL,
+  `comments` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `internships`
+--
+
+INSERT INTO `internships` (`id`, `company_name`, `contact`, `address`, `internship_subject`, `field`, `description`, `duration`, `technologies`, `remuneration`, `deliverables`, `num_interns`, `applicant_comment`, `comments`) VALUES
+(1, 'SupNum', 'dsdfngfn', 'dfbdfbdgn', 'b dgbdgnfg', 'bdfbdgbd', 'sdfdfbdf', '2', 'bgbgfbs', '  dfbrgtsrhsr', 'dfbdfnsf', 1, 'supnum@supnum.mr', 'bdfnsrher'),
+(2, 'BMCI', '1234563219', 'zeiny@gmail.com', 'DEV MOBILE', 'GAME', 'GAME MOBILE', '6 mois', 'JAVA JS ', '10%', '?', 4, 'mechyne vihe', 'bay bay'),
+(3, 'Zeiny_DEV', '12345674', 'dar_na3ime', 'game_mobile', 'game', 'we', ' 6 mois', 'c# js', '10%', '0', 1, 'sdcfvgbnhmj', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `membres_group`
+--
+
+CREATE TABLE `membres_group` (
+  `id` int(11) NOT NULL,
+  `id_etudiant` int(11) DEFAULT NULL,
+  `id_group` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -149,11 +225,9 @@ INSERT INTO `professeur` (`id`, `nom`, `prenom`, `tel`, `email`) VALUES
 CREATE TABLE `p_i` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) DEFAULT NULL,
-  `encadrer` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `technologie` varchar(255) DEFAULT NULL,
-  `semester` enum('s2','s3','s4','s5') DEFAULT NULL,
-  `id_professeur` int(11) DEFAULT NULL,
+  `semester` enum('S2','S3','S4','S5') DEFAULT NULL,
   `annee` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -161,18 +235,17 @@ CREATE TABLE `p_i` (
 -- Déchargement des données de la table `p_i`
 --
 
-INSERT INTO `p_i` (`id`, `titre`, `encadrer`, `description`, `technologie`, `semester`, `id_professeur`, `annee`) VALUES
-(1, 'jestion des p_i', 'meya', 'xkls;oreieklsdmfnlf', 'php', 's2', NULL, NULL),
-(3, 'getion des stage', 'meye', 'getion des stage', 'JAVA', 's3', NULL, NULL),
-(4, 'getion des stage', 'meye', 'qwrgthyjuki', 'JAVA', 's3', NULL, NULL),
-(5, 'getion des stage', 'meye', 'qwrgthyjuki', 'JAVA', 's3', NULL, 2025),
-(10, 'getion des stage', 'meye', 'aDzfbgxcvhjmk', 'JAVA', 's2', 3, 2025),
-(11, 'getion des stage', 'meye', 'test', 'JAVA', 's5', 3, 2024),
-(12, 'getion des stage', 'meye', 'test', 'JAVA', 's5', 4, 2024),
-(13, 'getion des stage', 'meye', 'weqrwgthnjm', 'JAVA', 's3', 3, 2025),
-(14, 'getion des stage', 'meye', 'jhghtfds', 'JAVA', 's4', 4, 2025),
-(15, 'getion des p_i', 'zeiny', 'test', 'php', 's2', 3, 2024),
-(16, 'getion des p_i', 'zeiny', 'test', 'php', 's2', 3, 2024);
+INSERT INTO `p_i` (`id`, `titre`, `description`, `technologie`, `semester`, `annee`) VALUES
+(23, 'getion des stage', 'test', 'php', 'S2', 2024),
+(24, 'getion de bourse ', 'test_p_i', 'python', 'S2', 2025),
+(25, 'getion de bube ', 'geton de bub', 'java', 'S2', 2025),
+(26, 'getion des stage', 'dafbgdfnhjmgnhfbgd', 'JAVA', '', 2024),
+(27, 'getion des stage', 'sadfgnhmj', 'JAVA', 'S3', 2024),
+(28, 'getion des stage', 'sadfgnhmj', 'JAVA', 'S3', 2024),
+(29, 'getion des stage', 'wefrgbrhnjmk,', 'JAVA', 'S4', 2024),
+(30, 'sdfgbhnjkml,', 'xrtyguihjok', 'rfygyuhjkl;', 'S3', 2024),
+(31, 'getion des stage', 'fgbrhnjmgxvcx', 'rfygyuhjkl;', 'S2', 2024),
+(32, 'getion des stage', 'zeuy ', 'JAVA', 'S4', 2024);
 
 -- --------------------------------------------------------
 
@@ -194,7 +267,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `is_valid`, `code`, `role`) VALUES
-(2, '21001@supnum.mr', '12345678', 1, 0, 3),
+(2, '21001@supnum.mr', '1', 1, 0, 3),
 (3, '21002@supnum.mr', '', 0, 0, 3),
 (4, '21003@supnum.mr', '', 0, 0, 3),
 (5, '21004@supnum.mr', '', 0, 0, 3),
@@ -560,6 +633,27 @@ ALTER TABLE `etudiant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `group`
+--
+ALTER TABLE `group`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_etudiant` (`id_etudiant`);
+
+--
+-- Index pour la table `internships`
+--
+ALTER TABLE `internships`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `membres_group`
+--
+ALTER TABLE `membres_group`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_etudiant` (`id_etudiant`),
+  ADD KEY `id_group` (`id_group`);
+
+--
 -- Index pour la table `professeur`
 --
 ALTER TABLE `professeur`
@@ -569,8 +663,7 @@ ALTER TABLE `professeur`
 -- Index pour la table `p_i`
 --
 ALTER TABLE `p_i`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `professeur_id` (`id_professeur`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
@@ -606,13 +699,31 @@ ALTER TABLE `compte`
 -- AUTO_INCREMENT pour la table `encadrant`
 --
 ALTER TABLE `encadrant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT pour la table `group`
+--
+ALTER TABLE `group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `internships`
+--
+ALTER TABLE `internships`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `membres_group`
+--
+ALTER TABLE `membres_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `professeur`
@@ -624,7 +735,7 @@ ALTER TABLE `professeur`
 -- AUTO_INCREMENT pour la table `p_i`
 --
 ALTER TABLE `p_i`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -650,10 +761,17 @@ ALTER TABLE `encadrant`
   ADD CONSTRAINT `encadrant_ibfk_2` FOREIGN KEY (`id_pi`) REFERENCES `p_i` (`id`);
 
 --
--- Contraintes pour la table `p_i`
+-- Contraintes pour la table `group`
 --
-ALTER TABLE `p_i`
-  ADD CONSTRAINT `p_i_ibfk_1` FOREIGN KEY (`id_professeur`) REFERENCES `professeur` (`id`);
+ALTER TABLE `group`
+  ADD CONSTRAINT `fk_etudiant` FOREIGN KEY (`id_etudiant`) REFERENCES `etudiant` (`id`);
+
+--
+-- Contraintes pour la table `membres_group`
+--
+ALTER TABLE `membres_group`
+  ADD CONSTRAINT `membres_group_ibfk_1` FOREIGN KEY (`id_etudiant`) REFERENCES `etudiant` (`id`),
+  ADD CONSTRAINT `membres_group_ibfk_2` FOREIGN KEY (`id_group`) REFERENCES `group` (`id`);
 
 --
 -- Contraintes pour la table `utilisateur`
