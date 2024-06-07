@@ -56,6 +56,11 @@ echo"<br><br><br><br><br><br>";
 table.dataTable thead>tr>th.dt-orderable-asc, table.dataTable thead>tr>th.dt-orderable-desc, table.dataTable thead>tr>td.dt-orderable-asc, table.dataTable thead>tr>td.dt-orderable-desc {
   background-color:#14b789 ;
 }
+.page-item.active .page-link {
+  background-color:#14b789;
+  border-color: #14b789;
+
+}
 
 </style>
 </head>

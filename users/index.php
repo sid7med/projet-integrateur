@@ -97,7 +97,7 @@ https://templatemo.com/tm-578-first-portfolio
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
+            <a href="#" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
 
             <div class="d-flex align-items-center d-lg-none">
                 <i class="navbar-icon bi-telephone-plus me-3"></i>
@@ -109,12 +109,12 @@ https://templatemo.com/tm-578-first-portfolio
             <nav class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item ">
-                        <a class="nav-link click-scroll" href="#section_1">Acceuil</a>
+                        <a class="nav-link click-scroll" href="index.php">Acceuil</a>
                     
 
                     <li class="nav-item">
                          <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
-                            <a href="indexGet.php" class="btn adm nav-link"  aria-expanded="false">
+                            <a href="indexGET.php" class="btn adm nav-link"  aria-expanded="false">
                             Projets Integrateurs
                             </a>
                     </li>

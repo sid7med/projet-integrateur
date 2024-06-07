@@ -121,7 +121,7 @@ if (isset($_SESSION['lead']) && $_SESSION['lead'] == 1) {?>
     border-color:#14b789;
 }
 </style>
-<a href="#" class="btn btn-primary mb-3 ">ajouter un group</a>
+<a href="add_group.php" class="btn btn-primary mb-3 ">ajouter un group</a>
 <?php } ?>
 
 

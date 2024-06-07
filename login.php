@@ -42,7 +42,7 @@ $leader=$row_1["lead"];
                 
                 $_SESSION['ent']=$row['id'];
                 $_SESSION['role']=$row['role'];
-                header("location:enterprise/index.php");
+                header("location: enterprise/index.php");
             }
        
     } else {
@@ -133,7 +133,7 @@ $leader=$row_1["lead"];
         <h2 class="login-tab">Login</h2>
         <img src="logo.png" alt="error" class="logo">
         <div id="login-form">
-            <form action="index.php" method="post" class="custom-form contact-form">
+            <form action="" method="post" class="custom-form contact-form">
                 <input type="text" class="form-control" name="email" id="Email" required placeholder="Enter your email">
                 <input type="password" class="form-control"  name="password" id="password" required placeholder="password">
                
