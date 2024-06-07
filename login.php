@@ -53,92 +53,100 @@ $leader=$row_1["lead"];
     mysqli_close($conn);
 }
     ?>
-
-             
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration and login Form</title>
-    <!-- importing fontawesome kit -->
-    <script src="https://kit.fontawesome.com/667417c7ec.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo-first-portfolio-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <!--    -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Lets add some styling -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
     <style>
-       
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-tab {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .options {
+            margin-bottom: 15px;
+        }
+        .options a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .options a:hover {
+            text-decoration: underline;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .logo{
+            max-width: 100px;
+            max-height: 100px;
+            margin-left: 125px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
-
 <body>
-
     <div class="container">
+        <h2 class="login-tab">Login</h2>
         <img src="logo.png" alt="error" class="logo">
-        <div class="tabs">
-            <h2 class="reg-tab">S'inscrire</h2>
-            <h2 class="login-tab active">Login</h2>
-        </div>
-        <!-- login part -->
-        <div id="login-form" class="active">
-            <form action="" method="post">
-                <input type="text" name="email" id="Email" required placeholder="Entrer votre email">
-                <input type="password" name="password" id="password" required placeholder="password">
-                <div class="options">
-                    <!-- <div class="remember">
-                        <input type="checkbox" name="rem" id="rem">
-                        <p>Remember Me</p>
-                    </div> -->
-                    <a href="modifier_mot_de_passe.php">Mot de passe oublié ?</a>
-                </div>
-                <button type="submit" name="submit">Se connecter</button>
-            </form>
-        </div>
-        <!-- Lets add registration form -->
-        <div id="registration-form">
-            <form action="">
+        <div id="login-form">
+            <form action="index.php" method="post" class="custom-form contact-form">
+                <input type="text" class="form-control" name="email" id="Email" required placeholder="Enter your email">
+                <input type="password" class="form-control"  name="password" id="password" required placeholder="password">
                
-                <input type="email" name="email" id="email" placeholder="Entrer votre email">
-                <input type="password" name="pass" id="pass" placeholder="Entrer le mot de passe">
-                <input type="password" name="confirm-pass" id="conform-pass" placeholder="Confirm Password">
-                <div class="tnc">
-                    <!-- <input type="checkbox" name="accept" id="accept"> -->
-                    <!-- <p>I accept the <a href="#">Terms & Conditions</a></p> -->
+                <div class="options">
+                    <a href="forgot_password.php" style=" margin-right:100px;" >Forgot password?</a>
+                    <a href="signup.php" style="margin-left:10px;">S'inscrire</a>
                 </div>
-                <button type="submit" >S'isncrire</button>
-               <center> <a href="enterprise/enterprise.php">S'inscrire d enterpris </a></center>
+                
+                <button type="submit" name="submit">Login</button>
             </form>
         </div>
-
     </div>
-    <!-- lets use some javascript to make these tabs to work -->
-    <script>
-        const reg_form = document.querySelector("#registration-form");
-        const login_form = document.querySelector("#login-form");
-
-        const reg_tab = document.querySelector('.reg-tab');
-        const login_tab = document.querySelector('.login-tab');
-
-        reg_tab.addEventListener('click',e=>{
-            login_form.style.display = 'none';
-            reg_form.style.display = 'block';
-            reg_tab.classList.add('active');
-            login_tab.classList.remove('active')
-        })
-        login_tab.addEventListener('click',e=>{
-            reg_form.style.display = 'none';
-            login_form.style.display = 'block';
-            reg_tab.classList.remove('active');
-            login_tab.classList.add('active')
-        })
-
-    </script>
 </body>
-
 </html>
+
 
