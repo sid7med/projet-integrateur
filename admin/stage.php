@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include "../db_conn.php";
@@ -7,7 +8,6 @@ if (strlen($_SESSION['admin']==0)) {
   } else{
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -44,6 +44,20 @@ https://templatemo.com/tm-578-first-portfolio
 
 -->
 <style> 
+div.services-thumb {
+    background: var(--white-color);
+    border: 2px solid green;
+    border-radius: var(--border-radius-medium);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    padding: 40px 40px 240px 40px;
+    transition: all 0.5s;
+}
+.services, .featured{
+    background-color: #d6eed6;
+}
+
 .btn {
     font-size: 16px;
     border: none;
@@ -77,153 +91,97 @@ https://templatemo.com/tm-578-first-portfolio
     padding-bottom: 35px;
     margin-right: 50px;
  }
- .navbar-brand{
-    color: black;
- }
-#stg{
-    color: black;
+ .btn-primary {
+    color: #fff;
+    background-color: #14B789;
+    border-color:#14B789 ;
 }
-#aut{
-color: black;
-}
-#con{
-    color: black;
-}
-.test{
-    padding: 100px;
-}
-
-.services-thumb-up{
-    bottom: 0px;
-    margin-top: 100px;
-}
+ 
 
 </style>
 </head>
 
 <body>
-<?php include"nav.php" ?>
-
-
-   
-
+   <?php
+include "nav.php";
+   ?>
         <section class="about section-padding" id="section_2">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
+                    <a href="../stage/t.php" class="btn btn-primary mb-3 ">+Ajouter Un stage</a></div>       <!-- <a class="btn-a custom-btn custom-border-btn btn mt-3" href="../stage/t.php" >+Ajouter Un Stage</a> -->
                         </div>
                             </div>
                         </div>
                     </div>
 
-                    <section class="about section-padding" id="section_2">
+         
+            <section class="about section-padding" id="section_2">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        </div>
-                            </div>
-                        </div>
-                    </div>
-
-            <a class="test" href="../stage/t.php" >+Ajouter Un Stage</a>
-
-<?php
-  	$conn = new mysqli("localhost","root","","p_i");
-    if (!$conn) {
-   echo "Connection failed!"; }
+            <div class="row">
+            <?php
+$conn = new mysqli("localhost", "root", "", "p_i");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 $sql_1 = "SELECT * FROM `internships`";
 $result = mysqli_query($conn, $sql_1);
 while ($row = mysqli_fetch_assoc($result)) { 
-    // Assuming the field you want to check is 'id'
     $id = $row['id'];
-    if ($id % 2 == 0) {
+    $description_preview = substr($row['description'], 0, 100); // Show the first 100 characters of the description
+    if ($id % 2 != 0) {
 ?>
-
-
-
 <div class="row pt-lg-5">
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
-
-                                        <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
-                                            <div class="services-price-overlay"></div>
-                                        </div>
-                                    </div>
-
-                                    <p><?php echo $row["description"]; ?>.</p>
-                                    <p><?php echo $row["technologies"]; ?></p>
-<br><br>
-                                    <a href="#" class="custom-btn custom-border-btn">Consulter</a>
-
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-globe"></i>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="col-lg-6 col-12">
+        <div class="services-thumb">
+            <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
+                <div class="services-price-wrap ms-auto">
+                    <p class="services-price-text mb-0">stage</p>
+                    <div class="services-price-overlay"></div>
+                </div>
+            </div>
+            <p class="description-preview"><?php echo $description_preview; ?>...</p>
+            <div class="details-container" style="display: none;">
+                <p><?php echo $row["technologie"]; ?></p>
+                <p><?php echo $row["description"]; ?>.</p>
+            </div>
+            <a href="inf_stage.php?id=<?php echo $id; ?>" class="custom-btn custom-border-btn btn mt-3 voir-plus-btn">Consulter</a>
+            <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                <i class="services-icon bi-globe"></i>
+            </div>
+        </div>
+    </div>
 
 <?php 
     } else {
 ?>
-
-
-<div class="col-lg-6 col-12">
-                                <div class="services-thumb services-thumb-up">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
-
-                                        <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
-                                            <div class="services-price-overlay"></div>
-                                        </div>
-                                    </div>
-
-                                    <p><?php echo $row["description"]; ?></p>
-                                    <p><?php echo $row["technologies"]; ?></p>
-                                    <br><br>
-                                    <a href="#" class="custom-btn custom-border-btn">Consulter</a>
-
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-lightbulb"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-</div> 
-
-
+    <div class="col-lg-6 col-12">
+        <div class="services-thumb services-thumb-up">
+            <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
+                <div class="services-price-wrap ms-auto">
+                    <p class="services-price-text mb-0">stage</p>
+                    <div class="services-price-overlay"></div>
+                </div>
+            </div>
+            <p class="description-preview"><?php echo $description_preview; ?>...</p>
+            <div class="details-container" style="display: none;">
+            <p><?php echo $row["technologie"]; ?></p>
+            <p><?php echo $row["description"]; ?>.</p>
+            </div>
+            <a href="inf_stage.php?id=<?php echo $id; ?>" class="custom-btn custom-border-btn btn mt-3 voir-plus-btn">Consulter</a>
+            <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                <i class="services-icon bi-lightbulb"></i>
+            </div>
+        </div>
+    </div>
+    
+</div>
 <?php 
     } // End of if-else
 } // End of while loop
 ?>
-
-
-
-
- 
-
-
-
-
-                </div>
-            </div>
-        </section>
-
-
-        
-                </div>
-            </div>
-        </section>
-
-
-                </div>
-            </div>
-            </div>
-        </section>
-
-    </main>
 
     <footer class="site-footer">
         <div class="container">
@@ -254,4 +212,4 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </body>
 </html>
-<?php } ?>
+<?php }?>

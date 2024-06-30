@@ -8,7 +8,6 @@ if (strlen($_SESSION['ent']==0)) {
 
 ?>
 
-
 <!doctype html>
 <html lang="en">
 
@@ -22,11 +21,11 @@ if (strlen($_SESSION['ent']==0)) {
     <title>SupNum Plateform</title>
 
     <!-- CSS FILES -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">  
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -44,6 +43,18 @@ https://templatemo.com/tm-578-first-portfolio
 
 -->
 <style> 
+body{
+    background-color: #d6eed6;
+}
+.services, .featured{
+    background-color: #d6eed6;
+}
+.profile-body p:nth-of-type(even) {
+    background-color: #d6eed6;
+}
+.contact{
+    background-color: #d6eed6;
+}
 .btn {
     font-size: 16px;
     border: none;
@@ -78,13 +89,114 @@ https://templatemo.com/tm-578-first-portfolio
     margin-right: 50px;
  }
  
+ .navbar-brand{
+            font-size: 20px; /* Adjust the size as needed */
 
+          
+        }
+
+ #profileDropdown {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        #profileDropdown a {
+            /* color: black; */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        #profileDropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60%;
+            margin-bottom: 10px;
+            flex-direction: column;
+            width: 200px;
+            margin-top: 10px;
+        }
+        .mb-1 {
+            cursor: pointer;
+        }
+        /* CSS pour l'image */
+        #myButton {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px; /* Espacement entre l'image et le bouton */
+        }
+        /* CSS pour la mise en page de la navigation du profil */
+        .nav-profile {
+            display: flex; /* Utiliser la disposition flexbox */
+            align-items: center; /* Aligner les éléments sur l'axe vertical */
+        }
+        #profileDropdown {
+            display: none;
+            position: absolute;
+            top: 100%; /* Positionner la div juste en dessous de son parent */
+            right: 0; /* Aligner la div sur le côté droit de son parent */
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .center-text {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+.custom-btn {
+    font-size: 10px;
+
+}
+
+
+    .custom-btn {
+        font-size: 5px;
+        border: none;
+        outline: none;
+        color: #14B789;
+        padding: 8px 8px;
+        background-color: inherit;
+        font-family: inherit;
+    }
+    .contact-btn-container {
+        font-size: 0.8em; /* Adjust font size */
+        padding: 5px; /* Adjust padding */
+        margin-right: 10px; /* Adjust margin */
+    }
+    .contact-btn-container .custom-btn {
+        padding: 5px 10px; /* Adjust button padding */
+    }
+    .center-text {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #14B789;
+}
+text-green{
+    color: #14B789;
+}
+.mb-1 text-green{
+    color: #14B789;
+}
 </style>
 </head>
-
+<!-- <h1><a href="../logout.php">bay</a></h1> -->
 <body>
-<h1><a href="../logout.php">by</a></h1>
-
+<a href="../logout.php"></a>
     <section class="preloader">
         <div class="spinner">
             <span class="spinner-rotate"></span>
@@ -99,7 +211,7 @@ https://templatemo.com/tm-578-first-portfolio
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
+            <a href="#" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
 
             <div class="d-flex align-items-center d-lg-none">
                 <i class="navbar-icon bi-telephone-plus me-3"></i>
@@ -111,17 +223,12 @@ https://templatemo.com/tm-578-first-portfolio
             <nav class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item ">
-                        <a class="nav-link click-scroll" href="#section_1">Acceuil</a>
-                
+                        <a class="nav-link click-scroll" href="index.php">Acceuil</a>
+                    
 
-                    <!-- <li class="nav-item">
-                        
-                            <a href="indexGet.php" class="btn adm nav-link"  aria-expanded="false">
-                            Projets Integrateurs
-                            </a>
-                    </li> -->
+                   
                     <li class="nav-item">
-                        
+                         <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
                             <a href="stage.php" class="btn adm nav-link"  aria-expanded="false">
                             stage
                             </a>
@@ -139,14 +246,53 @@ https://templatemo.com/tm-578-first-portfolio
                         <a class="nav-link click-scroll" href="#section_5">Autres</a>
                     </li>
                 </ul>
-
+<!--  -->
                 <div class="d-lg-flex align-items-center d-none ms-auto">
-                    <!-- <i class="navbar-icon bi-telephone-plus me-3"><a href="+222 37677296"></a></i> -->
-                    <a class="custom-btn btn" href="#section_5">
-                        Contactez SupNum
-                    </a>
+                    <?php if (isset($_SESSION['email'])): ?>
+                    <div class="dropdown">
+                        <div class="logo">
+                            <div class="nav-profile">
+                                <img src="../images/supnum.jpg" alt="image" draggable="false" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                                <div class="nav-profile-text">
+                                    <p style="color: #14B789;" onclick="toggleProfile()" class="mb-1 text-wrap"><?php echo $_SESSION['email']; ?></p>
+                                    <?php if ($_SESSION['role'] == 3): ?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        (Etudiant)
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if ($_SESSION['role'] == 2): ?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        (professeur)
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if ($_SESSION['role'] == 1):
+                                        $_SESSION['role'] ="admin" ?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        <!-- (admin) -->
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <i class="fas fa-check-circle text-success"></i> <!-- Icône de connexion verte -->
+                            </div>
+                            <div id="profileDropdown" class="dropdown-menu">
+                                <div class="logo">
+                                    <img id="myButton" class="style-scope yt-img-shadow" src="../images/supnum.jpg" draggable="false" style="width: 40px; height: 40px; border-radius: 50%;">
+                                </div>
+                                <center><p><?php echo $_SESSION['email']; ?></p></center>
+                                <center><p><?php echo $_SESSION['role']; ?></p></center>
+                                <a href="#">Gérer votre compte</a>
+                                <a href="logout.php">
+                                    <i class="bi bi-box-arrow-right text-primary"></i> Se déconnecter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else: ?>
+                    <a class="custom-btn btn" href="../login.php">Se connecter</a>
+                    <?php endif; ?>
                 </div>
-            </>
+
+           
 
         </div>
     </nav>
@@ -508,4 +654,4 @@ https://templatemo.com/tm-578-first-portfolio
 
 </body>
 </html>
-<?php }?>
+<?php } ?>

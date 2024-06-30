@@ -5,48 +5,62 @@ session_start();
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password =$_POST['password'];
+    
+    
     $email = mysqli_real_escape_string($conn, $email);
     $sql = "SELECT id, email, `password`, `role` FROM users WHERE email = '$email'
     and `password` = '$password'";
     $res = mysqli_query($conn, $sql);
 
     
-$sql_1="SELECT lead from etudiant WHERE matricule=LEFT('$email', 5) ";
+$sql_1="SELECT id ,lead, matricule,semester  from etudiant WHERE matricule=LEFT('$email', 5) ";
 $res_1=mysqli_query($conn,$sql_1);
 $row_1 = mysqli_fetch_assoc($res_1);
 
 $leader=$row_1["lead"];
+$matricule=$row_1['matricule'];
+$semester=$row_1['semester'];
+$id=$row_1['id'];
+
    
     if (mysqli_num_rows($res) > 0) {
         $row = mysqli_fetch_assoc($res);
 
    
             if ($row['role'] == 1) {
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['admin']=$row['id'];
                 $_SESSION['role']=$row['role'];
                 header("location: admin/index.php");
             } elseif ($row['role'] == 2) {
-                
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['prof']=$row['id'];
                 $_SESSION['role']=$row['role'];
                 header("location: prof/index.php");
             } elseif ($row['role'] == 3) {
-                
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['user']=$row['id'];
                 $_SESSION['role']=$row['role'];
                 $_SESSION['lead']=$leader;
+                $_SESSION['id']=$id;
+
+                $_SESSION['matricule']=$matricule;
+                $_SESSION['semester']=$semester;
 
                 header("location:users/index.php");
             } else {
                 
                 $_SESSION['ent']=$row['id'];
                 $_SESSION['role']=$row['role'];
+                $_SESSION['email'] = $row['email'];
                 header("location: enterprise/index.php");
             }
        
     } else {
-        echo "Aucun utilisateur trouvé avec cet email.";
+        $zeiny="le mot de passe ou email et incorrecte";
+        
+
     }
 
     // Fermer la connexion
@@ -110,7 +124,7 @@ $leader=$row_1["lead"];
         }
         button[type="submit"] {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #14b789;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -130,15 +144,22 @@ $leader=$row_1["lead"];
 </head>
 <body>
     <div class="container">
-        <h2 class="login-tab">Login</h2>
+        <h2 class="login-tab">Se connecter</h2>
         <img src="logo.png" alt="error" class="logo">
         <div id="login-form">
             <form action="" method="post" class="custom-form contact-form">
+                <?php
+                    if (!empty($zeiny)){?>
+                    <div class="error">
+                        <p style="color:red"><?php echo $zeiny; ?></p>
+                    <?php }; ?>
+                </div>
+                
                 <input type="text" class="form-control" name="email" id="Email" required placeholder="Enter your email">
                 <input type="password" class="form-control"  name="password" id="password" required placeholder="password">
                
                 <div class="options">
-                    <a href="forgot_password.php" style=" margin-right:100px;" >Forgot password?</a>
+                    <a href="newpass/change_passe.php" style=" margin-right:100px;" >Mot de passe oublié ?</a>
                     <a href="signup.php" style="margin-left:10px;">S'inscrire</a>
                 </div>
                 

@@ -1,4 +1,6 @@
+
 <?php
+
 $conn = mysqli_connect("localhost", "root", "", "p_i");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -9,7 +11,11 @@ $res = mysqli_query($conn, $sql);
 <?php
 session_start();
 include "../db_conn.php";
-
+include "nav.php";
+for ($i=0; $i<6; $i++)
+{
+    echo "<br>";
+}
 if (strlen($_SESSION['admin']==0)) {
   header('location: ../logout.php');
   } else{
@@ -26,10 +32,12 @@ if (strlen($_SESSION['admin']==0)) {
     <title>Document</title>
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #d6eed6;
+            
         }
-        .container {
-            margin-top: 50px;
+        .custom-form {
+            
+          margin: auto;
         }
         .form-floating {
             margin-bottom: 20px;
@@ -44,9 +52,20 @@ if (strlen($_SESSION['admin']==0)) {
             color: var(--p-color);
             
         }
+        .navbar-brand{
+            color: #717275;
+        }
+        
+        .navbar .custom-btn{
+            color: #14b789;
+            border-color:#14b789;
+        }
+
     </style>
 </head>
 <body >
+   
+
     <div class="container">
         <div class="col-lg-6 col-12 mt-5 mt-lg-0">
             <form action="ins.php" method="post" class="custom-form contact-form" role="form" style="margin-left:50px;">

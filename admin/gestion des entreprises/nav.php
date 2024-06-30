@@ -112,7 +112,7 @@ https://templatemo.com/tm-578-first-portfolio
                             </button>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="../gestion des étudiants/index.php">gestion des étudiants</a></li>
-                              <li><a class="dropdown-item" href="#">gestion des user</a></li>
+                              <li><a class="dropdown-item" href="../gestion des user/user.php">gestion des user</a></li>
                               <li><a class="dropdown-item" href="../gestion des entreprises/index.php">gestion des entreprises</a></li>
                             </ul>
                           </div>

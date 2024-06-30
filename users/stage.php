@@ -44,6 +44,49 @@ https://templatemo.com/tm-578-first-portfolio
 
 -->
 <style> 
+.services-thumb{
+    background-color: #d6eed6;
+}
+footer {
+    background-color: #d6eed6;
+}
+.all{
+    background-color: #d6eed6;
+}
+body{
+    background-color: #d6eed6;
+}
+.services, .featured{
+    background-color: #d6eed6;
+}
+.profile-body p:nth-of-type(even) {
+    background-color: #d6eed6;
+}
+.contact{
+    background-color: #d6eed6;
+}
+footer{
+    background-color: #d6eed6;
+}
+.container{
+    background-color: #d6eed6;
+}
+.all{
+    background-color: #d6eed6;
+}
+div.services-thumb {
+    background-color:#fff;
+    border: 2px solid green;
+    border-radius: var(--border-radius-medium);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    padding: 40px 40px 240px 40px;
+    transition: all 0.5s;
+}
+.about section-padding{
+    background-color: #d6eed6;
+}
 .btn {
     font-size: 16px;
     border: none;
@@ -107,17 +150,18 @@ color: black;
   include "nav.php";
   ?>
 
-   
+   <div class="all">
 
         <section class="about section-padding" id="section_2">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
+                     <!-- <a class="btn-a custom-btn custom-border-btn btn mt-3" href="../stage/t.php" >+Ajouter Un Stage</a>  -->
                         </div>
                             </div>
-                        </div>
-                    </div>
-
+                        </div> 
+                    
+<!-- 
                     <section class="about section-padding" id="section_2">
             <div class="container">
                 <div class="row">
@@ -125,8 +169,10 @@ color: black;
                         </div>
                             </div>
                         </div>
-                    </div>
-
+                    </div> -->
+                    <section class="about section-padding" id="section_2">
+            <div class="container">
+            <div class="row">
             
 
 <?php
@@ -138,7 +184,7 @@ $result = mysqli_query($conn, $sql_1);
 while ($row = mysqli_fetch_assoc($result)) { 
     // Assuming the field you want to check is 'id'
     $id = $row['id'];
-    if ($id % 2 == 0) {
+    if ($id % 2 != 0) {
 ?>
 
 
@@ -150,7 +196,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                         <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
+                                            <p class="services-price-text mb-0">stage</p>
                                             <div class="services-price-overlay"></div>
                                         </div>
                                     </div>
@@ -177,7 +223,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                         <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0"><?php echo $row["deliverables"]; ?></p>
+                                            <p class="services-price-text mb-0">stage</p>
                                             <div class="services-price-overlay"></div>
                                         </div>
                                     </div>
@@ -214,19 +260,11 @@ while ($row = mysqli_fetch_assoc($result)) {
         </section>
 
 
-        
-                </div>
-            </div>
-        </section>
+       
 
 
-                </div>
-            </div>
-            </div>
-        </section>
-
-    </main>
-
+    
+</div>
     <footer class="site-footer">
         <div class="container">
             <div class="row">

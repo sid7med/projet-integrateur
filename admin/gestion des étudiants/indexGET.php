@@ -57,7 +57,7 @@ https://templatemo.com/tm-578-first-portfolio
 
 
 -->
-<style> 
+<style>
 .btn {
     font-size: 16px;
     border: none;
@@ -67,12 +67,12 @@ https://templatemo.com/tm-578-first-portfolio
     background-color: inherit;
     font-family: inherit;
     margin-left: 20px;
-    position: relative; 
+    position: relative;
   }
-  
+
 
   .btn {
-    transition: transform 0.3s ease-in-out; 
+    transition: transform 0.3s ease-in-out;
   }
 
   .btn {

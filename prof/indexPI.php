@@ -1,13 +1,13 @@
+
 <?php
 session_start();
 include "../db_conn.php";
 
-if (strlen($_SESSION['user']==0)) {
+if (strlen($_SESSION['prof']==0)) {
   header('location: ../logout.php');
   } else{
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -44,6 +44,42 @@ https://templatemo.com/tm-578-first-portfolio
 
 -->
 <style> 
+body{
+    background-color: #d6eed6;
+}
+.services, .featured{
+    background-color: #d6eed6;
+}
+.profile-body p:nth-of-type(even) {
+    background-color: #d6eed6;
+}
+.contact{
+    background-color: #d6eed6;
+}
+footer{
+    background-color: #d6eed6;
+}
+.container{
+    background-color: #d6eed6;
+}
+.all{
+    background-color: #d6eed6;
+}
+div.services-thumb {
+    background-color:#fff;
+    border: 2px solid green;
+    border-radius: var(--border-radius-medium);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    padding: 40px 40px 240px 40px;
+    transition: all 0.5s;
+}
+
+.services, .featured{
+    background-color: #d6eed6;
+}
+
 .btn {
     font-size: 16px;
     border: none;
@@ -53,78 +89,68 @@ https://templatemo.com/tm-578-first-portfolio
     background-color: inherit;
     font-family: inherit;
     margin-left: 20px;
-    position: relative; 
-  }
+    position: relative;  
+   }
   .btn-a{
     font-size: 40px;
     border: none;
-    /* outline: none; */
-    color: green;
+    outline: none;
+    color: white;
     padding-left:20px;
-    /* background-color: inherit; */
+    background-color: #14b789;
     font-family: initial;
     margin-left: 250px;
     position: relative;
-  }
-  .btn {
+  }  .btn {
     transition: transform 0.3s ease-in-out; 
   }
 
   .btn {
     cursor: pointer;
-  }
+  } 
  .pi{
     padding-bottom: 35px;
     margin-right: 50px;
  }
- .navbar-brand{
-    color: black;
+ .btn-primary{
+    background-color: #14b789;
  }
-#stg{
-    color: black;
-}
-#aut{
-color: black;
-}
-#con{
-    color: black;
-}
-.test{
-    padding: 100px;
-}
-.services-thumb{
+ 
 
-    margin-top: 100px;
-}
-.navbar-nav .nav-link{
-    color:  var(--p-color);
-}
-.btn-primary {
-    color: #fff;
-    background-color:#14b789;
-    border-color:#14b789;
-}
 </style>
 </head>
 
-<body>
 
-    
-<?php
-  include "nav.php";
-echo"<br><br><br><br><br><br>";
-if (isset($_SESSION['lead']) && $_SESSION['lead'] == 1) {?>
-    <style>
-    .btn-primary {
-    color: #fff;
-    background-color:#14b789;
-    border-color:#14b789;
-}
-</style>
-<a href="add_group.php" class="btn btn-primary mb-3 ">ajouter un group</a>
-<?php } ?>
+   <?php
+include "nav.php";
+   ?>
+   <div class="all">
+        <section class="about section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                    
+                    <a href="add.php" class="btn btn-primary mb-3 ">+Ajouter Un PI</a>
+                        </div>
+                            </div>
+                        </div>
+                       
+                   
 
-
+                    <!-- <section class="about section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        </div>
+                            </div>
+                        </div>
+                    </div> -->
+                  
+                
+            <section class="about section-padding" id="section_2">
+            <div class="container">
+            <div class="row">
+                
 <?php
   	$conn = new mysqli("localhost","root","","p_i");
     if (!$conn) {
@@ -137,7 +163,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     if ($id % 2 != 0) {
 ?>
 
-
 <div class="row pt-lg-5">
                             <div class="col-lg-6 col-12">
                                 <div class="services-thumb">
@@ -145,8 +170,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                                         <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$2,400</p>
-                                            <div class="services-price-overlay"></div>
+                                            <p class="services-price-text mb-0">encadrer</p>
+                                            <!-- <div class="services-price-overlay"></div> -->
                                         </div>
                                     </div>
 
@@ -165,15 +190,15 @@ while ($row = mysqli_fetch_assoc($result)) {
     } else {
 ?>
 
-
+<!-- <section class="about section-padding" id="section_2"> -->
 <div class="col-lg-6 col-12">
                                 <div class="services-thumb services-thumb-up">
                                     <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
                                         <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
 
                                         <div class="services-price-wrap ms-auto">
-                                            <p class="services-price-text mb-0">$1,200</p>
-                                            <div class="services-price-overlay"></div>
+                                            <p class="services-price-text mb-0">encadrer</p>
+                                            <!-- <div class="services-price-overlay"></div> -->
                                         </div>
                                     </div>
 
@@ -194,33 +219,15 @@ while ($row = mysqli_fetch_assoc($result)) {
     } // End of if-else
 } // End of while loop
 ?>
-
-
-
-
-
-
-
-
-
-                </div>
+            </div>
+            </div>
+            </div>
+            </section>
+             </div>
             </div>
         </section>
 
-
-        
-                </div>
-            </div>
-        </section>
-
-
-                </div>
-            </div>
-            </div>
-        </section>
-
-    </main>
-
+   
     <footer class="site-footer">
         <div class="container">
             <div class="row">
@@ -237,6 +244,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             </div>
         </div>
+        
     </footer>
 
     <!-- JAVASCRIPT FILES -->

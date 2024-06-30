@@ -34,7 +34,13 @@ https://templatemo.com/tm-578-first-portfolio
 -->
 
 <style>
-   
+    body{
+        max-width: 100%;
+    }
+   .btn-primary{
+    background-color: #14b789;
+    border: #14b789;
+ }
    .navbar {
    background: transparent;
    position: absolute;

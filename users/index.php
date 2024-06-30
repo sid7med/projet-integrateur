@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include "../db_conn.php";
@@ -43,6 +44,18 @@ https://templatemo.com/tm-578-first-portfolio
 
 -->
 <style> 
+body{
+    background-color: #d6eed6;
+}
+.services, .featured{
+    background-color: #d6eed6;
+}
+.profile-body p:nth-of-type(even) {
+    background-color: #d6eed6;
+}
+.contact{
+    background-color: #d6eed6;
+}
 .btn {
     font-size: 16px;
     border: none;
@@ -77,12 +90,109 @@ https://templatemo.com/tm-578-first-portfolio
     margin-right: 50px;
  }
  
+ .navbar-brand{
+            font-size: 20px; /* Adjust the size as needed */
+
+            /* color: black; */
+        }
+
+ #profileDropdown {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        #profileDropdown a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        #profileDropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60%;
+            margin-bottom: 10px;
+            flex-direction: column;
+            width: 200px;
+            margin-top: 10px;
+        }
+        .mb-1 {
+            cursor: pointer;
+        }
+        /* CSS pour l'image */
+        #myButton {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px; /* Espacement entre l'image et le bouton */
+        }
+        /* CSS pour la mise en page de la navigation du profil */
+        .nav-profile {
+            display: flex; /* Utiliser la disposition flexbox */
+            align-items: center; /* Aligner les éléments sur l'axe vertical */
+        }
+        #profileDropdown {
+            display: none;
+            position: absolute;
+            top: 100%; /* Positionner la div juste en dessous de son parent */
+            right: 0; /* Aligner la div sur le côté droit de son parent */
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .center-text {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+.custom-btn {
+    font-size: 10px;
+
+}
+
+
+    .custom-btn {
+        font-size: 5px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 8px 8px;
+        background-color: inherit;
+        font-family: inherit;
+    }
+    .contact-btn-container {
+        font-size: 0.8em; /* Adjust font size */
+        padding: 5px; /* Adjust padding */
+        margin-right: 10px; /* Adjust margin */
+    }
+    .contact-btn-container .custom-btn {
+        padding: 5px 10px; /* Adjust button padding */
+    }
+    .navbar-brand{
+        color: #d6eed6;
+    }
+    .text-zeiny{
+        color: #14B789;
+    }
+</style>
 
 </style>
 </head>
-<!-- <h1><a href="../logout.php">bay</a></h1> -->
-<body>
 
+<body>
+<a href="../logout.php"></a>
     <section class="preloader">
         <div class="spinner">
             <span class="spinner-rotate"></span>
@@ -97,7 +207,7 @@ https://templatemo.com/tm-578-first-portfolio
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a href="#" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
+            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">Gestion des PIs Et Stages</a>
 
             <div class="d-flex align-items-center d-lg-none">
                 <i class="navbar-icon bi-telephone-plus me-3"></i>
@@ -109,12 +219,23 @@ https://templatemo.com/tm-578-first-portfolio
             <nav class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item ">
-                        <a class="nav-link click-scroll" href="index.php">Acceuil</a>
-                    
+                        <a class="nav-link click-scroll" href="#section_1">Acceuil</a>
+                    <li class="nav-item ">
+                        <!-- <div class="dropdown ">
+                            <button class="btn adm nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                adminstration
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="gestion des étudiants/index.php">gestion des étudiants</a></li>
+                              <li><a class="dropdown-item" href="gestion des user/>liste.php">gestion des user</a></li>
+                              <li><a class="dropdown-item" href="gestion des entreprises/index.php">gestion des entreprises</a></li>
+                            </ul>
+                          </div> -->
+                    </li>
 
                     <li class="nav-item">
                          <!-- <a class="nav-link click-scroll" href="#section_2"></a>  -->
-                            <a href="indexGET.php" class="btn adm nav-link"  aria-expanded="false">
+                            <a href="indexPI.php" class="btn adm nav-link"  aria-expanded="false">
                             Projets Integrateurs
                             </a>
                     </li>
@@ -138,16 +259,71 @@ https://templatemo.com/tm-578-first-portfolio
                     </li>
                 </ul>
 
-                <div class="d-lg-flex align-items-center d-none ms-auto">
-                    <!-- <i class="navbar-icon bi-telephone-plus me-3"><a href="+222 37677296"></a></i> -->
+                <!-- <div class="d-lg-flex align-items-center d-none ms-auto">
                     <a class="custom-btn btn" href="#section_5">
                         Contactez SupNum
                     </a>
+                </div> -->
+
+                <div class="d-lg-flex align-items-center d-none ms-auto">
+                    <?php if (isset($_SESSION['email'])): ?>
+                    <div class="dropdown">
+                        <div class="logo">
+                            <div class="nav-profile">
+                                <img src="../images/supnum.jpg" alt="image" draggable="false" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                                <div class="nav-profile-text">
+                                    <p style=" color: #14B789;" onclick="toggleProfile()" class="mb-1 text-zeiny"><?php echo $_SESSION['email']; ?></p>
+                                    <?php if ($_SESSION['role'] == 1): ?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        (Etudiant)
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if ($_SESSION['role'] == 2): ?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        (professeur)
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if ($_SESSION['role'] == 3):
+                                         $_SESSION['role']="Etudiant";?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        <!-- (Etudiant) -->
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <i class="fas fa-check-circle text-success"></i> <!-- Icône de connexion verte -->
+                            </div>
+                            <div id="profileDropdown" class="dropdown-menu">
+                                <div class="logo">
+                                    <img id="myButton" class="style-scope yt-img-shadow" src="../images/supnum.jpg" draggable="false" style="width: 40px; height: 40px; border-radius: 50%;">
+                                </div>
+                                <center><p><?php echo $_SESSION['email']; ?></p></center>
+                                <center><p><?php echo $_SESSION['role']; ?></p></center>
+                                <a href="#">Gérer votre compte</a>
+                                <a href="../logout.php">
+                                    <i class="bi bi-box-arrow-right text-primary"></i> Se déconnecter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else: ?>
+                    <a class="custom-btn btn" href="../login.php">Se connecter</a>
+                    <?php endif; ?>
                 </div>
-            </>
+
 
         </div>
     </nav>
+    <script>
+        // Fonction pour afficher ou masquer le div du profil
+        function toggleProfile() {
+            var profileDropdown = document.getElementById("profileDropdown");
+            if (profileDropdown.style.display === "none") {
+                profileDropdown.style.display = "block";
+            } else {
+                profileDropdown.style.display = "none";
+            }
+        }
+    </script>
 
     <main>
 
@@ -259,7 +435,7 @@ https://templatemo.com/tm-578-first-portfolio
                                 <div class="col-lg-6 col-6 featured-border-start ps-5 pt-4">
                                     <strong class="featured-numbers">72+</strong>
 
-                                    <p class="featured-text">Prix numériques</p>
+                                    <p class="featured-text">Entreprises satisfaits</p>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 include "db_conn.php";
-// include "register.php";
+include "controller.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +9,12 @@ include "db_conn.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/templatemo-first-portfolio-style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
+      
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -71,7 +72,7 @@ include "db_conn.php";
             color: red;
             margin-top: 10px;
         }
-        .logo{
+        .logo {
             max-width: 100px;
             max-height: 100px;
             margin-left: 125px;
@@ -80,23 +81,27 @@ include "db_conn.php";
     </style>
 </head>
 <body>
-    
     <div id="login-form" class="container">
-    <h2 class="login-tab">S'isncrire</h2>
-    <img src="logo.png" alt="error" class="logo">
-        <form action="controller.php" method="post" class="custom-form contact-form" onsubmit="return validateForm()">
+        <h2 class="login-tab">S'inscrire</h2>
+        <img src="logo.png" alt="error" class="logo">
+        <form action="" method="post" class="custom-form contact-form" onsubmit="return validateForm()">
+            <?php if (!empty($errors)): ?>
+                <div class="error">
+                    <?php foreach ($errors as $error): ?>
+                        <p style="color:red"><?php echo $error; ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
             <input type="text" class="form-control" name="email" id="Email" required placeholder="Enter your email">
             <input type="password" class="form-control" name="password" id="password" required placeholder="password">
             <input type="password" class="form-control" name="conform_password" id="conform_password" required placeholder="Confirm password">
             <div id="errorMessages" class="error"></div>
             <div class="options">
-                <a href="#" style="margin-right:100px;">Forgot password?</a>
+                <a href="newpass/change_passe.php" style="margin-right:100px;">Mot de passe oublié ?</a>
                 <a href="login.php" style="margin-left:10px;">login</a>
             </div>
-
-            <button type="submit"  name="signup">S'isncrire</button>
+            <button type="submit" name="signup">S'inscrire</button>
         </form>
-        
     </div>
 
     <script>

@@ -35,16 +35,24 @@ if (isset($_POST['save']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>Document</title>
+    <style>
+        body{
+            background-color: #d6eed6;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:cornflowerblue;">
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:#d6eed6;">
         Liste des étudiants
     </nav>
-    <div class="container">
+    <div class="container"><h2>Ajouter un etudiant</h2>
         <div class="wrapper ">
             <div class="d-flex p-2  justify-content-between">
-                <h2>Ajouter un utilisateur</h2>
+               
                 <div><a href="index.php"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-left"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg></a></div>
             </div>
         </div>

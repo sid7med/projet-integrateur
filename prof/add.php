@@ -1,11 +1,5 @@
-<?php
-session_start();
-include "../db_conn.php";
 
-if (strlen($_SESSION['prof']==0)) {
-  header('location: ../logout.php');
-  } else{
-//  include "nav.php";
+<?php
 
 $conn = mysqli_connect("localhost", "root", "", "p_i");
 if (!$conn) {
@@ -13,6 +7,19 @@ if (!$conn) {
 }
 $sql = "SELECT * FROM `professeur`";
 $res = mysqli_query($conn, $sql);
+?>
+<?php
+session_start();
+include "../db_conn.php";
+include "nav.php";
+for ($i=0; $i<6; $i++)
+{
+    echo "<br>";
+}
+if (strlen($_SESSION['prof']==0)) {
+  header('location: ../logout.php');
+  } else{
+
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +32,13 @@ $res = mysqli_query($conn, $sql);
     <title>Document</title>
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #d6eed6;
+            
         }
-        
+        .custom-form {
+            
+          margin: auto;
+        }
         .form-floating {
             margin-bottom: 20px;
         }
@@ -42,24 +53,20 @@ $res = mysqli_query($conn, $sql);
             
         }
         .navbar-brand{
-            color: black;
+            color: #717275;
         }
+        
         .navbar .custom-btn{
-            border-color: #14b789;
-    color: #14b789;
+            color: #14b789;
+            border-color:#14b789;
         }
-        form{
-            margin-top: 100px;
-            margin-left: 100px;
-        }
-        .navbar{
-            margin-top: -10px;
-        }
-      
+
     </style>
 </head>
 <body >
-  <center>  <div class="container">
+   
+
+    <div class="container">
         <div class="col-lg-6 col-12 mt-5 mt-lg-0">
             <form action="ins.php" method="post" class="custom-form contact-form" role="form" style="margin-left:50px;">
                 <div class="row">
@@ -110,11 +117,11 @@ $res = mysqli_query($conn, $sql);
                 </div>
             </form>
         </div>
-    </div>
-    </center>
+    </di>
 </body>
 </html>
 <?php
   }
 mysqli_close($conn);
+
 ?>

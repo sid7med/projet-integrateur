@@ -116,7 +116,7 @@
             cursor: pointer;
         }
 
-        <style>
+        
     .custom-btn {
         font-size: 16px;
         border: none;
@@ -157,7 +157,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="index.php">Acceuil</a>
+                        <a class="nav-link click-scroll" href="../index.php">Acceuil</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -165,20 +165,20 @@
                                 Administration
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="gestion des étudiants/index.php">Gestion des étudiants</a></li>
-                                <li><a class="dropdown-item" href="#">Gestion des utilisateurs</a></li>
-                                <li><a class="dropdown-item" href="gestion des entreprises/index.php">Gestion des entreprises</a></li>
+                                <li><a class="dropdown-item" href="../gestion des étudiants/index.php">Gestion des étudiants</a></li>
+                                <li><a class="dropdown-item" href="user.php">Gestion des utilisateurs</a></li>
+                                <li><a class="dropdown-item" href="../gestion des entreprises/index.php">Gestion des entreprises</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="indexGET.php">Projets Integrateurs</a>
+                        <a class="nav-link click-scroll" href="../indexGET.php">Projets Integrateurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="stage.php">Stages</a>
+                        <a class="nav-link click-scroll" href="../stage.php">Stages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="index.php">Autres</a>
+                        <a class="nav-link click-scroll" href="../index.php">Autres</a>
                     </li>
                 </ul>
                 <!-- <div class="d-lg-flex align-items-center d-none ms-auto">
@@ -192,10 +192,10 @@
                     <div class="dropdown">
                         <div class="logo">
                             <div class="nav-profile">
-                                <img src="../images/supnum.jpg" alt="image" draggable="false" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
-                                <div class="nav-profile-text">
+                                <img src="../../logo.png" alt="image" draggable="false" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                                <div class="nav-profile-text" >
                                     <p onclick="toggleProfile()" class="mb-1 text-black"><?php echo $_SESSION['email']; ?></p>
-                                    <?php if ($_SESSION['role'] == 1): ?>
+                                    <?php if ($_SESSION['role'] == 3): ?>
                                     <div onclick="toggleProfile()" class='center-text'>
                                         (Etudiant)
                                     </div>
@@ -205,17 +205,22 @@
                                         (professeur)
                                     </div>
                                     <?php endif; ?>
+                                    <?php if ($_SESSION['role'] == 1): ?>
+                                    <div onclick="toggleProfile()" class='center-text'>
+                                        (admin)
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                                 <i class="fas fa-check-circle text-success"></i> <!-- Icône de connexion verte -->
                             </div>
                             <div id="profileDropdown" class="dropdown-menu">
                                 <div class="logo">
-                                    <img id="myButton" class="style-scope yt-img-shadow" src="../images/supnum.jpg" draggable="false" style="width: 40px; height: 40px; border-radius: 50%;">
+                                    <img id="myButton" class="style-scope yt-img-shadow" src="../../logo.png" draggable="false" style="width: 40px; height: 40px; border-radius: 50%;">
                                 </div>
                                 <center><p><?php echo $_SESSION['email']; ?></p></center>
                                 <center><p><?php echo $_SESSION['role']; ?></p></center>
                                 <a href="#">Gérer votre compte</a>
-                                <a href="logout.php">
+                                <a href="../../logout.php">
                                     <i class="bi bi-box-arrow-right text-primary"></i> Se déconnecter
                                 </a>
                             </div>
@@ -249,3 +254,11 @@
     </script>
 </body>
 </html>
+
+<script>
+
+function ahmed() {
+
+}
+
+</script>

@@ -91,15 +91,7 @@ div.services-thumb {
     padding-bottom: 35px;
     margin-right: 50px;
  }
- /* .btn {
-background-color: #14B789;
- } */
-
- .btn-primary {
-    color: #fff;
-    background-color:#14b789;
-    border-color:#14b789;
- }
+ 
 
 </style>
 </head>
@@ -112,21 +104,12 @@ include "nav.php";
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
-                      <!-- <a class="btn-a custom-btn custom-border-btn btn mt-3" href="add.php" >+Ajouter Un PI</a> -->
-                           <a href="add.php" class="btn btn-primary mb-3 style=color:#14B789;">+Ajouter Un PI</a></div>
+                           <a class="btn-a custom-btn custom-border-btn btn mt-3" href="../stage/t.php" >+Ajouter Un Stage</a>
+                        </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <section class="about section-padding" id="section_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        </div>
-                            </div>
-                        </div>
-                    </div> -->
-                  
          
             <section class="about section-padding" id="section_2">
             <div class="container">
@@ -136,7 +119,7 @@ $conn = new mysqli("localhost", "root", "", "p_i");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql_1 = "SELECT * FROM `p_i`";
+$sql_1 = "SELECT * FROM `internships`";
 $result = mysqli_query($conn, $sql_1);
 while ($row = mysqli_fetch_assoc($result)) { 
     $id = $row['id'];
@@ -147,9 +130,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     <div class="col-lg-6 col-12">
         <div class="services-thumb">
             <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
+                <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
                 <div class="services-price-wrap ms-auto">
-                    <p class="services-price-text mb-0">encadrer</p>
+                    <p class="services-price-text mb-0">$2,400</p>
                     <div class="services-price-overlay"></div>
                 </div>
             </div>
@@ -158,7 +141,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <p><?php echo $row["technologie"]; ?></p>
                 <p><?php echo $row["description"]; ?>.</p>
             </div>
-            <a href="inf_pi.php?id=<?php echo $id; ?>" class="custom-btn custom-border-btn btn mt-3 voir-plus-btn">Consulter</a>
+            <a href="inf_stage.php?id=<?php echo $id; ?>" class="custom-btn custom-border-btn btn mt-3 voir-plus-btn">Consulter</a>
             <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                 <i class="services-icon bi-globe"></i>
             </div>
@@ -171,18 +154,18 @@ while ($row = mysqli_fetch_assoc($result)) {
     <div class="col-lg-6 col-12">
         <div class="services-thumb services-thumb-up">
             <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                <h3 class="mb-0"><?php echo $row["titre"]; ?></h3>
+                <h3 class="mb-0"><?php echo $row["company_name"]; ?></h3>
                 <div class="services-price-wrap ms-auto">
-                    <p class="services-price-text mb-0">encadrer</p>
+                    <p class="services-price-text mb-0">$1,200</p>
                     <div class="services-price-overlay"></div>
                 </div>
             </div>
             <p class="description-preview"><?php echo $description_preview; ?>...</p>
             <div class="details-container" style="display: none;">
             <p><?php echo $row["technologie"]; ?></p>
-            <p><?php echo $row["description"]; ?>.</p> 
+            <p><?php echo $row["description"]; ?>.</p>
             </div>
-            <a href="inf_pi.php?id=<?php echo $id; ?>" class="custom-btn custom-border-btn btn mt-3 voir-plus-btn">Consulter</a>
+            <a href="inf_stage.php?id=<?php echo $id; ?>" class="custom-btn custom-border-btn btn mt-3 voir-plus-btn">Consulter</a>
             <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                 <i class="services-icon bi-lightbulb"></i>
             </div>
@@ -194,8 +177,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     } // End of if-else
 } // End of while loop
 ?>
-
-
 
     <footer class="site-footer">
         <div class="container">

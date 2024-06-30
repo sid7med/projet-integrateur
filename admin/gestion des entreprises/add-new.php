@@ -1,6 +1,6 @@
 
 <?php
-// include "nav.php";
+// include "nav.php";   
 
 // Connexion à la base de données
 $con = new mysqli('localhost', 'root', '', 'p_i');
@@ -46,16 +46,24 @@ if (isset($_POST['save'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>Document</title>
+    <style>
+        body{
+            background-color: #d6eed6;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container"> 
         <div class="wrapper ">
             <div class="d-flex p-2 justify-content-between">
-                <h2 class="text-center">Ajouter un utilisateur</h2>
+                <!-- <h2 class="text-center">Ajouter un utilisateur</h2> -->
                 <div><a href="index.php"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-left"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg></a></div>
-            </div>
+            </div><h2 class="text-center">Ajouter un entreprise</h2>
         </div>
         <div>
             <form action="" method="post" style="width:50vw; min-width:300px;" class="m-auto" enctype="multipart/form-data">

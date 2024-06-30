@@ -64,7 +64,7 @@ echo"<br><br><br><br>";
     <title>Fiche Description de Stage</title>
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #d6eed6;
             font-family: Arial, sans-serif;
             margin: 20px;
         }

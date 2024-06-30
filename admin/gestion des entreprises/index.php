@@ -77,7 +77,9 @@ https://templatemo.com/tm-578-first-portfolio
     margin-left: 20px;
     position: relative; 
   } */
-  
+  body{
+    background-color: #d6eed6;
+  }
 
   .btn {
     transition: transform 0.3s ease-in-out; 

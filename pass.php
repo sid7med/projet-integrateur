@@ -72,12 +72,12 @@
 
     
     <div class="container">
-        <h2 class="login-tab">Code</h2>
+        <h2 class="login-tab">Login</h2>
         <div id="login-form">
             <form action="controller.php" method="post" class="custom-form contact-form">
-                <input type="number" class="form-control" name="otp" id="Email" required placeholder="Enter Code">
+                <input type="email" class="form-control" name="otp" id="Email" required placeholder="Enter email">
 
-                <button type="submit" name="verify">Login</button>
+                <button type="submit" name="mot_de_passe">Login</button>
             </form>
 </body>
 </html>
